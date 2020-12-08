@@ -90,7 +90,6 @@ func get(query string) ([]byte, error) {
 }
 
 func (s Service) report(token string, start, end string) (*ResponseData, error) {
-
 	params := make([]string, 0)
 	params = append(params, fmt.Sprintf("key=%s", token))
 	params = append(params, "report=SALES")

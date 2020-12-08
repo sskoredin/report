@@ -3,6 +3,8 @@ package config
 import (
 	"errors"
 	"fmt"
+	"github.com/BurntSushi/toml"
+	"io/ioutil"
 	"os"
 	"path"
 )
@@ -21,6 +23,17 @@ func Check() error {
 		}
 		return err
 	}
+	f, err := ioutil.ReadFile(configFile)
+	if err != nil {
+		return err
+	}
+	var conf Config
+	if err := toml.Unmarshal(f, &conf); err != nil {
+		return err
+	}
+
+	fmt.Println(conf)
+
 	return nil
 }
 

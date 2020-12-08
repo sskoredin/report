@@ -64,6 +64,7 @@ func main() {
 		usage(fmt.Sprintf("Invalid command %s", cmd))
 	}
 	if err != nil {
+		log.Printf("Failed to %s %s: %v\n", cmd, svcName, err)
 		elog.Error(eventid, fmt.Sprintf("Failed to %s %s: %v", cmd, svcName, err))
 	}
 	return
@@ -144,6 +145,7 @@ func exePath() (string, error) {
 }
 
 func installService(name, desc string) error {
+	log.Printf("Installing service %s...\n", name)
 	elog.Info(eventid, fmt.Sprintf("Install %s service.", name))
 
 	exepath, err := exePath()
@@ -158,6 +160,7 @@ func installService(name, desc string) error {
 	s, err := m.OpenService(name)
 	if err == nil {
 		s.Close()
+		log.Printf("service %s already exists", name)
 		return fmt.Errorf("service %s already exists", name)
 	}
 	s, err = m.CreateService(name, exepath, mgr.Config{DisplayName: desc}, "is", "auto-started")
@@ -168,8 +171,10 @@ func installService(name, desc string) error {
 	err = eventlog.InstallAsEventCreate(name, eventlog.Error|eventlog.Warning|eventlog.Info)
 	if err != nil {
 		s.Delete()
-		return fmt.Errorf("SetupelogSource() failed: %s", err)
+		log.Printf("install failed %s", err.Error())
+		return fmt.Errorf("Install() failed: %s ", err)
 	}
+	log.Println("Service installed")
 	return nil
 }
 
@@ -245,13 +250,14 @@ func controlService(name string, c svc.Cmd, to svc.State) error {
 }
 
 func runApp() {
+	elog.Info(eventid, fmt.Sprint("Start iiko report"))
 	if isFirstRun {
 		isFirstRun = false
-		elog.Info(eventid, fmt.Sprint("Start iiko report"))
 
 		a := app.New()
 
 		if err := a.Run(); err != nil {
+			log.Println(err)
 			elog.Error(eventid, err.Error())
 			return
 		}

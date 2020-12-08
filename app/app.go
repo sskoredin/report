@@ -18,7 +18,6 @@ func New() App {
 }
 
 func (a App) Run() error {
-
 	if err := config.Check(); err != nil {
 		a.logger.Error(err)
 		return err
