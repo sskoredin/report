@@ -37,7 +37,6 @@ func Convert(responseData *client.ResponseData) Report {
 }
 
 func ReportName() string {
-
 	now := time.Now()
 	year, month, _ := now.Date()
 	return fmt.Sprintf("./%d.%d.xlsx", month, year)

@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"mail/config"
 	"mail/converter"
+	"mail/logger"
 	"os"
 	"time"
 )
@@ -16,11 +17,13 @@ import (
 type Service struct {
 	Configfile string
 	config     config.Mail
+	logger     logger.Logger
 }
 
 func New(configFile string) Service {
 	return Service{
 		Configfile: configFile,
+		logger:     logger.New("mail", logrus.DebugLevel),
 	}
 }
 
@@ -49,8 +52,10 @@ func (s *Service) readConfig() error {
 }
 
 func (s Service) send() error {
+	s.logger.Info("sending mail")
+
 	filename := converter.ReportName()
-	if _, err := os.Stat(filename); !os.IsNotExist(err) {
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
 		return errors.New("Have no attachment ")
 	}
 	d := mv2.NewDialer(s.config.Host, s.config.Port, s.config.User, s.config.Password)

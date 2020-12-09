@@ -31,10 +31,6 @@ func New(name string, level logrus.Level) Logger {
 	return Logger{log.WithField("method", name)}
 }
 
-func (l Logger) ErrorWithCode(msg string, code int) {
-	l.Errorf("status:[%d] error:'%v'", code, msg)
-}
-
 func checkFile(name string) string {
 	p, err := os.Getwd()
 	if err != nil {
