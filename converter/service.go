@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/tealeg/xlsx"
 	"mail/client"
+	"sort"
 	"time"
 )
 
@@ -11,7 +12,7 @@ func Convert(responseData *client.ResponseData) Report {
 	if responseData == nil {
 		return nil
 	}
-	report := make([]ReportValue, len(responseData.R))
+	values := make([]ReportValue, len(responseData.R))
 	for i, v := range responseData.R {
 		closeTime, _ := time.Parse(time.UnixDate, v.CloseTime)
 
@@ -24,25 +25,35 @@ func Convert(responseData *client.ResponseData) Report {
 			PayTypes:                   v.PayTypes,
 			DiscountType:               v.OrderDiscountType,
 			DishAmountInt:              v.DishAmountInt,
-			CloseTime:                  closeTime.Format("02.01.2006 15:04:05"),
+			CloseTime:                  closeTime,
 			OrderNum:                   v.OrderNum,
 			DishSumInt:                 v.DishSumInt,
 			DiscountSum:                v.DiscountSum,
 			DishDiscountSumInt:         v.DishDiscountSumInt,
 			ProductCostBaseProductCost: v.ProductCostBaseProductCost,
 		}
-		report[i] = value
+		values[i] = value
 	}
-	return report
+	sort.Slice(values, func(i, j int) bool {
+		return values[i].CloseTime.Before(values[j].CloseTime)
+	})
+
+	return values
 }
 
-func ReportName() string {
+func ReportName(start, end string) string {
 	now := time.Now()
 	year, month, _ := now.Date()
-	return fmt.Sprintf("./%d.%d.xlsx", month, year)
+	if len(end) > 0 {
+		e, _ := time.Parse("02.01.2006", end)
+		month = e.Month()
+		year = e.Year()
+	}
+	name := fmt.Sprintf("./%d.%d.xlsx", month, year)
+	return fmt.Sprintf("%s\\%s", "C:\\Program Files\\iikoReporter\\reports", name)
 }
 
-func (rep Report) ToXlsx() error {
+func (rep Report) ToXlsx(start, end string) error {
 	if rep == nil {
 		return nil
 	}
@@ -73,29 +84,10 @@ func (rep Report) ToXlsx() error {
 		setValue(headersRows, headers[i])
 	}
 	for i, _ := range s.Cols {
-		s.Cols[i].SetStyle(&xlsx.Style{
-			Border: xlsx.Border{
-				Left:        "1",
-				LeftColor:   "black",
-				Right:       "1",
-				RightColor:  "black",
-				Top:         "1",
-				TopColor:    "black",
-				Bottom:      "1",
-				BottomColor: "black",
-			},
-			Font: xlsx.Font{
-				Size: 6,
-			},
-			ApplyAlignment: true,
-			Alignment: xlsx.Alignment{
-				WrapText: true,
-			},
-		})
-		if in([]int{0, 1}, i) {
-			s.Cols[i].Width = 15
+		if in([]int{2, 4, 6, 8}, i) {
+			s.Cols[i].Width = 25
 		}
-		if in([]int{3, 7, 9, 10, 11, 12, 13, 14, 15}, i) {
+		if in([]int{0, 1, 3, 7, 9, 10, 11, 12, 13, 14, 15}, i) {
 			s.Cols[i].Width = 15
 		}
 	}
@@ -110,7 +102,7 @@ func (rep Report) ToXlsx() error {
 		setValue(r, v.PayTypes)
 		setValue(r, v.DiscountType)
 		setValue(r, v.DishAmountInt)
-		setValue(r, v.CloseTime)
+		setValue(r, v.CloseTime.Format("02.01.2006 15:04:05"))
 		setValue(r, v.OrderNum)
 		setValue(r, v.DishSumInt)
 		setValue(r, v.DiscountSum)
@@ -118,7 +110,7 @@ func (rep Report) ToXlsx() error {
 		setValue(r, v.ProductCostBaseProductCost)
 	}
 
-	return f.Save(ReportName())
+	return f.Save(ReportName(start, end))
 }
 
 func in(array []int, index int) bool {
@@ -133,11 +125,6 @@ func in(array []int, index int) bool {
 
 func setValue(r *xlsx.Row, value interface{}) {
 	c := r.AddCell()
-
-	if v, ok := value.(float64); ok {
-		c.SetFloatWithFormat(v, ".2f")
-		return
-	}
 
 	c.SetValue(value)
 }

@@ -20,19 +20,19 @@ type Service struct {
 	logger     logger.Logger
 }
 
-func New(configFile string) Service {
+func New() Service {
 	return Service{
-		Configfile: configFile,
+		Configfile: config.FileName(),
 		logger:     logger.New("mail", logrus.DebugLevel),
 	}
 }
 
-func (s Service) Send() error {
+func (s Service) Send(start, end string) error {
 	err := s.readConfig()
 	if err != nil {
 		return err
 	}
-	return s.send()
+	return s.send(start, end)
 }
 
 func (s *Service) readConfig() error {
@@ -51,10 +51,10 @@ func (s *Service) readConfig() error {
 	return nil
 }
 
-func (s Service) send() error {
+func (s Service) send(start, end string) error {
 	s.logger.Info("sending mail")
 
-	filename := converter.ReportName()
+	filename := converter.ReportName(start, end)
 	if _, err := os.Stat(filename); os.IsNotExist(err) {
 		return errors.New("Have no attachment ")
 	}
@@ -64,8 +64,8 @@ func (s Service) send() error {
 	if err != nil {
 		return err
 	}
-	m := mv2.NewMessage()
 	for _, recipient := range s.config.Recipients {
+		m := mv2.NewMessage()
 		m.SetAddressHeader("From", s.config.User, "robot")
 		m.SetHeader("To", recipient)
 		m.SetHeader("Subject", s.config.Subject)

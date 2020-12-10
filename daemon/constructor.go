@@ -20,7 +20,7 @@ func New(configfile string) Daemon {
 	return Daemon{
 		Configfile:    configfile,
 		logger:        logger.New("daemon", logrus.DebugLevel),
-		clientService: client.New(configfile),
-		mailService:   mail.New(configfile),
+		clientService: client.New(),
+		mailService:   mail.New(),
 	}
 }

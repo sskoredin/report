@@ -1,5 +1,7 @@
 package converter
 
+import "time"
+
 type ReportValue struct {
 	Date                       string
 	JurName                    string
@@ -9,7 +11,7 @@ type ReportValue struct {
 	PayTypes                   string
 	DiscountType               string
 	DishAmountInt              float64
-	CloseTime                  string
+	CloseTime                  time.Time
 	OrderNum                   int
 	DishSumInt                 float64
 	DiscountSum                float64

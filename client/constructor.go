@@ -15,9 +15,9 @@ type Service struct {
 	logger     logger.Logger
 }
 
-func New(configfile string) Service {
+func New() Service {
 	return Service{
-		Configfile: configfile,
+		Configfile: config.FileName(),
 		logger:     logger.New("client", logrus.DebugLevel),
 	}
 }

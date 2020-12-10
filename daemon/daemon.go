@@ -7,10 +7,9 @@ import (
 	"io/ioutil"
 	"log"
 	"mail/config"
-	"mail/converter"
+	"mail/report"
 	"os"
 	"os/signal"
-	"time"
 )
 
 func (d Daemon) Run() error {
@@ -60,39 +59,8 @@ func (d Daemon) process() {
 	log.Println("process")
 	d.logger.Debugf("Start process daemon...")
 
-	if err := d.doWithAttempts(0); err != nil {
+	if err := report.MakeReportWithAttempts("", "", 0); err != nil {
 		d.logger.Error(err)
 		return
 	}
-}
-
-func (d Daemon) doWithAttempts(attempt int) error {
-	log.Println("start process", attempt)
-	resp, err := d.clientService.Collect()
-	if err != nil {
-		if attempt >= 5 {
-			log.Println("max attempts")
-			return err
-		}
-		time.Sleep(10 * time.Minute)
-		attempt++
-		if err := d.doWithAttempts(attempt); err != nil {
-			return err
-		}
-	}
-	if resp == nil {
-		d.logger.Warn("Empty response")
-		log.Println("Empty response")
-		return nil
-	}
-	report := converter.Convert(resp)
-	if err := report.ToXlsx(); err != nil {
-		return err
-	}
-
-	return d.sendReport()
-}
-
-func (d Daemon) sendReport() error {
-	return d.mailService.Send()
 }

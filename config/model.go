@@ -1,12 +1,24 @@
 package config
 
+import "fmt"
+
 type Database struct {
 	File string `toml:"file"`
+}
+
+type Rest struct {
+	Host string `toml:"host" json:"host"`
+	Port int    `toml:"port" json:"port"`
+}
+
+func (r Rest) ListenAddr() string {
+	return fmt.Sprintf("%s:%d", r.Host, r.Port)
 }
 
 type Config struct {
 	Mail   Mail   `toml:"mail" json:"mail" `
 	Client Client `toml:"client" json:"client" `
+	Rest   Rest   `toml:"rest" json:"rest" `
 	Daemon Daemon `toml:"daemon" json:"daemon"`
 }
 

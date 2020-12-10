@@ -6,24 +6,16 @@ import (
 	"github.com/BurntSushi/toml"
 	"io/ioutil"
 	"os"
-	"path"
 )
 
-const file = "config.toml"
-
 func Check() error {
-	p, err := os.Getwd()
-	if err != nil {
-		return err
-	}
-	configFile := path.Join(p, "config.toml")
-	if _, err := os.Stat(configFile); err != nil {
+	if _, err := os.Stat(FileName()); err != nil {
 		if os.IsNotExist(err) {
-			return errors.New(fmt.Sprintf("config %s file not exist", configFile))
+			return errors.New(fmt.Sprintf("config %s file not exist", FileName()))
 		}
 		return err
 	}
-	f, err := ioutil.ReadFile(configFile)
+	f, err := ioutil.ReadFile(FileName())
 	if err != nil {
 		return err
 	}
@@ -38,7 +30,5 @@ func Check() error {
 }
 
 func FileName() string {
-	p, _ := os.Getwd()
-
-	return path.Join(p, file)
+	return "C:\\Program Files\\iikoReporter\\config.toml"
 }

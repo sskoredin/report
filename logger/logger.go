@@ -4,11 +4,10 @@ import (
 	nested "github.com/antonfisher/nested-logrus-formatter"
 	"github.com/sirupsen/logrus"
 	"os"
-	"path"
 )
 
 const (
-	logfile = "app.log"
+	logfile = "C:\\Program Files\\iikoReporter\\app.log"
 )
 
 type Logger struct {
@@ -32,20 +31,14 @@ func New(name string, level logrus.Level) Logger {
 }
 
 func checkFile(name string) string {
-	p, err := os.Getwd()
-	if err != nil {
-		logrus.Error(err)
-		return name
-	}
-	file := path.Join(p, logfile)
-	_, err = os.Stat(file)
+	_, err := os.Stat(logfile)
 	if os.IsNotExist(err) {
-		if _, err := os.Create(file); err != nil {
+		if _, err := os.Create(logfile); err != nil {
 			logrus.Error(err)
 		}
 		logrus.Error(err)
 		return logfile
 	}
 
-	return file
+	return logfile
 }

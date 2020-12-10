@@ -12,9 +12,10 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+	"time"
 )
 
-func (s Service) Collect() (*ResponseData, error) {
+func (s Service) Collect(st, e string) (*ResponseData, error) {
 	err := s.readConfig()
 	if err != nil {
 		return nil, err
@@ -24,8 +25,16 @@ func (s Service) Collect() (*ResponseData, error) {
 	if err != nil {
 		return nil, err
 	}
+	start, err := getStart(st)
+	if err != nil {
+		return nil, err
+	}
+	end, err := getEnd(e)
+	if err != nil {
+		return nil, err
+	}
 
-	return s.report(token, start(), end())
+	return s.report(token, start, end)
 }
 
 func (s Service) auth() (string, error) {
@@ -42,6 +51,7 @@ func (s Service) auth() (string, error) {
 	if len(result) > 45 {
 		return "", errors.New("Not authorized ")
 	}
+
 	return fmt.Sprintf(string(resp)), nil
 }
 
@@ -123,10 +133,27 @@ func (s Service) report(token string, start, end string) (*ResponseData, error) 
 	return result, nil
 }
 
-func start() string {
-	return now.BeginningOfMonth().Format("02.01.2006")
+func getStart(st string) (string, error) {
+	start := now.BeginningOfMonth()
+	if len(st) > 0 {
+		v, err := time.Parse("02.01.2006", st)
+		if err != nil {
+			return "", err
+		}
+		start = v
+	}
+	return start.Format("02.01.2006"), nil
 }
 
-func end() string {
-	return now.BeginningOfDay().Format("02.01.2006")
+func getEnd(e string) (string, error) {
+	end := now.BeginningOfDay()
+	if len(e) > 0 {
+		v, err := time.Parse("02.01.2006", e)
+		if err != nil {
+			return "", err
+		}
+		end = v
+	}
+
+	return end.Format("02.01.2006"), nil
 }
