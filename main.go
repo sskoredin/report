@@ -60,6 +60,9 @@ func main() {
 	case "run":
 		log.Println("start app not as service")
 		runApp()
+	case "send":
+		log.Println("send report")
+		send()
 	default:
 		usage(fmt.Sprintf("Invalid command %s", cmd))
 	}
@@ -257,6 +260,21 @@ func runApp() {
 		a := app.New()
 
 		if err := a.Run(); err != nil {
+			log.Println(err)
+			elog.Error(eventid, err.Error())
+			return
+		}
+	}
+}
+
+func send() {
+	elog.Info(eventid, fmt.Sprint("Start iiko report"))
+	if isFirstRun {
+		isFirstRun = false
+
+		a := app.New()
+
+		if err := a.Send(); err != nil {
 			log.Println(err)
 			elog.Error(eventid, err.Error())
 			return

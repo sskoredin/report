@@ -78,29 +78,27 @@ type query struct {
 	start, end string
 }
 
-func (q query) isValid() bool {
+func (q query) isValid() (bool, error) {
 	if len(q.start) == 0 && len(q.end) == 0 {
-		return true
+		return true, nil
 	}
-	if len(q.start) == 0 {
-		return false
+	if len(q.start) == 0 || len(q.end) == 0 {
+		return false, nil
 	}
-	if len(q.end) == 0 {
-		return false
-	}
+
 	st, err := time.Parse("02.01.2006", q.start)
 	if err != nil {
-		return false
+		return false, err
 	}
 	end, err := time.Parse("02.01.2006", q.end)
 	if err != nil {
-		return false
-	}
-	if v := end.Sub(st); end.Before(st) || v > (31*24*time.Hour) {
-		return false
+		return false, err
 	}
 
-	return true
+	if v := end.Sub(st); end.Before(st) || v > (31*24*time.Hour) {
+		return false, nil
+	}
+	return true, nil
 }
 
 func (r Rest) getReport(w http.ResponseWriter, req *http.Request) {
@@ -108,8 +106,12 @@ func (r Rest) getReport(w http.ResponseWriter, req *http.Request) {
 	var q query
 	q.start = values.Get("start")
 	q.end = values.Get("end")
-	if !q.isValid() {
-		fmt.Fprint(w, "invalid period")
+	valid, err := q.isValid()
+	if err != nil {
+		fmt.Fprintf(w, "error check period start=%s end=%s. err: %s ", q.start, q.end, err.Error())
+	}
+	if !valid {
+		fmt.Fprintf(w, "invalid period start=%s end=%s", q.start, q.end)
 		return
 	}
 

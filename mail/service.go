@@ -11,7 +11,6 @@ import (
 	"mail/converter"
 	"mail/logger"
 	"os"
-	"time"
 )
 
 type Service struct {
@@ -68,10 +67,10 @@ func (s Service) send(start, end string) error {
 		m := mv2.NewMessage()
 		m.SetAddressHeader("From", s.config.User, "robot")
 		m.SetHeader("To", recipient)
-		m.SetHeader("Subject", s.config.Subject)
+		m.SetHeader("Subject", fmt.Sprintf("%s %s", s.config.Subject, end))
 		m.Attach(filename)
 
-		m.SetBody("text/html", fmt.Sprintf("OLAP report %s", time.Now().Format("02.01.2006 15:04:05")))
+		m.SetBody("text/html", fmt.Sprintf("OLAP report %s", end))
 		if err := mv2.Send(sm, m); err != nil {
 			return err
 		}
