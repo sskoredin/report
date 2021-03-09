@@ -7,7 +7,7 @@ type Daemon struct {
 	Scheduler string `toml:"scheduler" json:"scheduler"`
 }
 
-func (c Daemon) Read() error {
+func (c *Daemon) Read() error {
 	client, err := consul.NewClient()
 	if err != nil {
 		return err

@@ -1,44 +1,64 @@
 package logger
 
 import (
-	nested "github.com/antonfisher/nested-logrus-formatter"
-	"github.com/sirupsen/logrus"
-	"os"
-)
-
-const (
-	logfile = "./app.log"
+	"fmt"
+	"github.com/sskoredin/telegram_client"
+	"log"
 )
 
 type Logger struct {
-	*logrus.Entry
+	*telegram_client.Client
+	name string
 }
 
-func New(name string, level logrus.Level) Logger {
-	log := logrus.New()
-	file := checkFile()
-	log.SetLevel(level)
-	log.SetFormatter(&nested.Formatter{
-		HideKeys: true,
-	})
-	f, err := os.OpenFile(file, os.O_WRONLY|os.O_CREATE, 0755)
+func New(name string) *Logger {
+	c, err := telegram_client.NewClient()
 	if err != nil {
-		log.Error(err)
+		log.Println(err)
 	}
-	log.SetOutput(f)
 
-	return Logger{log.WithField("method", name)}
+	return &Logger{
+		Client: c,
+		name:   name,
+	}
+}
+func (l Logger) Info(msg ...interface{}) error {
+	log.Print()
+	return l.Send(l.convert("Info", msg))
 }
 
-func checkFile() string {
-	_, err := os.Stat(logfile)
-	if os.IsNotExist(err) {
-		if _, err := os.Create(logfile); err != nil {
-			logrus.Error(err)
-		}
-		logrus.Error(err)
-		return logfile
-	}
+func (l Logger) Infof(format string, v ...interface{}) error {
+	return l.Send(l.convert("Info", fmt.Sprintf(format, v...)))
+}
 
-	return logfile
+func (l Logger) Warn(msg ...interface{}) error {
+	return l.Send(l.convert("Warn", msg))
+}
+
+func (l Logger) Warnf(format string, v ...interface{}) error {
+	return l.Send(l.convert("Debug", fmt.Sprintf(format, v...)))
+}
+
+func (l Logger) Debug(msg ...interface{}) error {
+	return l.Send(l.convert("Debug", msg))
+}
+
+func (l Logger) Debugf(format string, v ...interface{}) error {
+	return l.Send(l.convert("Debug", fmt.Sprintf(format, v...)))
+}
+
+func (l Logger) Fatal(msg ...interface{}) error {
+	return l.Send(l.convert("Fatal", msg))
+}
+
+func (l Logger) Fatalf(format string, v ...interface{}) error {
+	return l.Send(l.convert("Fatal", fmt.Sprintf(format, v...)))
+}
+
+func (l Logger) Error(msg ...interface{}) error {
+	return l.Send(l.convert("Error", msg))
+}
+
+func (l Logger) convert(level string, msg ...interface{}) string {
+	return fmt.Sprintf("iiko_olap_report\n[%s][%s]\n%v", l.name, level, msg)
 }

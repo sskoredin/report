@@ -1,7 +1,6 @@
 package app
 
 import (
-	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/iiko_report/daemon"
 	"github.com/sskoredin/iiko_report/logger"
 	"github.com/sskoredin/iiko_report/report"
@@ -10,12 +9,12 @@ import (
 )
 
 type App struct {
-	logger logger.Logger
+	logger *logger.Logger
 }
 
 func New() App {
 	return App{
-		logger: logger.New("app", logrus.DebugLevel),
+		logger: logger.New("app"),
 	}
 }
 

@@ -4,7 +4,6 @@ import (
 	"github.com/robfig/cron"
 	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/iiko_report/report"
-	"log"
 	"os"
 	"os/signal"
 )
@@ -37,8 +36,7 @@ func (d Daemon) Run() error {
 }
 
 func (d Daemon) process() {
-	log.Println("process")
-	d.logger.Debugf("Start process daemon...")
+	d.logger.Debug("Start process daemon...")
 
 	if err := report.MakeReportWithAttempts("", "", 0); err != nil {
 		d.logger.Error(err)

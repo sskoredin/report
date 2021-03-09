@@ -76,8 +76,7 @@ func (s Service) queryBuilder(link string, params interface{}) string {
 
 	u.RawQuery = q.Encode()
 	query := u.String()
-	s.logger.Println(query)
-	fmt.Println(query)
+	s.logger.Debug(query)
 	return query
 }
 

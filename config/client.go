@@ -8,7 +8,7 @@ type Client struct {
 	API      string `toml:"api" json:"api"`
 }
 
-func (c Client) Read() error {
+func (c *Client) Read() error {
 	client, err := consul.NewClient()
 	if err != nil {
 		return err

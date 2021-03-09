@@ -1,7 +1,9 @@
 package config
 
 var defaultValues = map[string]string{
-	TelegramChatIDS: "",
+	TelegramChatIDS:    "",
+	TelegramXAuthToken: "",
+	TelegramURL:        "0.0.0.0:3250",
 
 	OLAPRestHost: "0.0.0.0",
 	OLAPRestPort: "8230",
@@ -10,7 +12,8 @@ var defaultValues = map[string]string{
 	IikoLogin:    "Yakupov",
 	IikoPassword: "1Qz2876",
 
-	MailHost:      "mail.nic.ru:587",
+	MailHost:      "mail.nic.ru",
+	MailPort:      "587",
 	MailLogin:     "robot@davidoffclub.ru",
 	MailPassword:  "SwITERyCHEwConoT1",
 	MailAddressee: "robot",

@@ -13,7 +13,7 @@ type Rest struct {
 func (r Rest) ListenAddr() string {
 	return fmt.Sprintf("%s:%d", r.Host, r.Port)
 }
-func (r Rest) Read() error {
+func (r *Rest) Read() error {
 	client, err := consul.NewClient()
 	if err != nil {
 		return err

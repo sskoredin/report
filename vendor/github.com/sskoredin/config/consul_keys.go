@@ -1,7 +1,9 @@
 package config
 
 const (
-	TelegramChatIDS = "telegram_chat_ids"
+	TelegramChatIDS    = "telegram_chat_ids"
+	TelegramXAuthToken = "telegram_xauth-token"
+	TelegramURL        = "telegram_url"
 
 	OLAPRestHost = "rest_host"
 	OLAPRestPort = "rest_port"

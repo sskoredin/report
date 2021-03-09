@@ -3,7 +3,8 @@ module github.com/sskoredin/iiko_report
 go 1.16
 
 require (
-	github.com/antonfisher/nested-logrus-formatter v1.3.1
+	github.com/Syfaro/telegram-bot-api v4.6.4+incompatible // indirect
+	github.com/antonfisher/nested-logrus-formatter v1.3.1 // indirect
 	github.com/armon/go-metrics v0.3.6 // indirect
 	github.com/fatih/color v1.10.0 // indirect
 	github.com/google/btree v1.0.0 // indirect
@@ -18,15 +19,19 @@ require (
 	github.com/jinzhu/now v1.1.1
 	github.com/kr/pretty v0.2.1 // indirect
 	github.com/kr/text v0.2.0 // indirect
+	github.com/labstack/gommon v0.3.0 // indirect
 	github.com/miekg/dns v1.1.31 // indirect
 	github.com/mitchellh/go-testing-interface v1.14.0 // indirect
 	github.com/mitchellh/mapstructure v1.4.1 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/robfig/cron v1.2.0
 	github.com/sirupsen/logrus v1.8.1
-	github.com/sskoredin/config v0.0.0-20210309143507-1d49323c1e2c
+	github.com/sskoredin/config v0.0.0-20210309161207-ba55002ff5c8
+	github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412 // indirect
+	github.com/sskoredin/telegram_client v0.0.0-20210309154645-4a3727b26ee9
 	github.com/stretchr/testify v1.6.1 // indirect
 	github.com/tealeg/xlsx v1.0.5
+	github.com/technoweenie/multipartstreamer v1.0.1 // indirect
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83 // indirect
 	golang.org/x/net v0.0.0-20200930145003-4acb6c075d10 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c

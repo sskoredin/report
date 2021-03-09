@@ -14,12 +14,12 @@ import (
 type Service struct {
 	Configfile string
 	config     config.Mail
-	logger     logger.Logger
+	logger     *logger.Logger
 }
 
 func New() Service {
 	return Service{
-		logger: logger.New("mail", logrus.DebugLevel),
+		logger: logger.New("mail"),
 	}
 }
 

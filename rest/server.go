@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/gorilla/mux"
-	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/logger"
 	"github.com/sskoredin/iiko_report/report"
@@ -17,13 +16,13 @@ import (
 )
 
 type Rest struct {
-	logger logger.Logger
+	logger *logger.Logger
 	config config.Rest
 }
 
 func New() Rest {
 	return Rest{
-		logger: logger.New("api", logrus.DebugLevel),
+		logger: logger.New("api"),
 	}
 }
 

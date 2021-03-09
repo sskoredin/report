@@ -1,10 +1,7 @@
-# github.com/AlecAivazis/survey/v2 v2.2.8
-## explicit
-# github.com/Masterminds/semver/v3 v3.1.1
+# github.com/Syfaro/telegram-bot-api v4.6.4+incompatible
 ## explicit
 # github.com/antonfisher/nested-logrus-formatter v1.3.1
 ## explicit
-github.com/antonfisher/nested-logrus-formatter
 # github.com/armon/go-metrics v0.3.6
 ## explicit
 github.com/armon/go-metrics
@@ -47,12 +44,12 @@ github.com/jinzhu/now
 ## explicit
 # github.com/kr/text v0.2.0
 ## explicit
+# github.com/labstack/gommon v0.3.0
+## explicit
 # github.com/mattn/go-colorable v0.1.8
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.12
 github.com/mattn/go-isatty
-# github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
-## explicit
 # github.com/miekg/dns v1.1.31
 ## explicit
 # github.com/mitchellh/go-homedir v1.1.0
@@ -62,8 +59,6 @@ github.com/mitchellh/go-homedir
 # github.com/mitchellh/mapstructure v1.4.1
 ## explicit
 github.com/mitchellh/mapstructure
-# github.com/oligot/go-mod-upgrade v0.4.0
-## explicit
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
@@ -73,14 +68,21 @@ github.com/robfig/cron
 # github.com/sirupsen/logrus v1.8.1
 ## explicit
 github.com/sirupsen/logrus
-# github.com/sskoredin/config v0.0.0-20210309143507-1d49323c1e2c
+# github.com/sskoredin/config v0.0.0-20210309161207-ba55002ff5c8
 ## explicit
 github.com/sskoredin/config
+# github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412
+## explicit
+# github.com/sskoredin/telegram_client v0.0.0-20210309154645-4a3727b26ee9
+## explicit
+github.com/sskoredin/telegram_client
 # github.com/stretchr/testify v1.6.1
 ## explicit
 # github.com/tealeg/xlsx v1.0.5
 ## explicit
 github.com/tealeg/xlsx
+# github.com/technoweenie/multipartstreamer v1.0.1
+## explicit
 # golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
 ## explicit
 # golang.org/x/net v0.0.0-20200930145003-4acb6c075d10
@@ -93,10 +95,6 @@ golang.org/x/sync/errgroup
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# golang.org/x/term v0.0.0-20210220032956-6a3ed077a48d
-## explicit
-# golang.org/x/text v0.3.5
-## explicit
 # gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc
 ## explicit
 gopkg.in/alexcesaro/quotedprintable.v3
