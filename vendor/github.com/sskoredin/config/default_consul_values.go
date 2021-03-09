@@ -2,7 +2,7 @@ package config
 
 var defaultValues = map[string]string{
 	//Telegram
-	TelegramChatIDS:    "[492307185]",
+	TelegramChatIDS:    "492307185",
 	TelegramXAuthToken: "",
 	TelegramURL:        "logger:3250",
 

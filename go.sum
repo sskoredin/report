@@ -183,6 +183,8 @@ github.com/sskoredin/config v0.0.0-20210309213228-8b577ac150f3 h1:Q25bwyzL0ohsNr
 github.com/sskoredin/config v0.0.0-20210309213228-8b577ac150f3/go.mod h1:zQiAH92ovzH7Ee2ErnwNQFz7gzLDZiqnRSwn/7F9Bb0=
 github.com/sskoredin/config v0.0.0-20210309220158-1792034980be h1:sbWE361Agm9eOtO2z4WEDizdq8q7HyWERCxiwLsNvgY=
 github.com/sskoredin/config v0.0.0-20210309220158-1792034980be/go.mod h1:zQiAH92ovzH7Ee2ErnwNQFz7gzLDZiqnRSwn/7F9Bb0=
+github.com/sskoredin/config v0.0.0-20210309225412-e7b8db3f57c8 h1:9dmIWOdZOvx+dN7oqXVM2NvZ/7ENJtcby0kfxWKHR98=
+github.com/sskoredin/config v0.0.0-20210309225412-e7b8db3f57c8/go.mod h1:zQiAH92ovzH7Ee2ErnwNQFz7gzLDZiqnRSwn/7F9Bb0=
 github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412 h1:jGuy1wkBC64rXwqPZ5h99Yep+blPtrBITdKTPzBM478=
 github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412/go.mod h1:pweJppd51UMtZyjtXA2QmQ/hA5tjRY3YmHpcoHI9Hac=
 github.com/sskoredin/telegram_client v0.0.0-20210309154645-4a3727b26ee9 h1:h2c+BF+XZTjweSTcBsf0y6CIq7s8hLLbwpfp5xmy5ps=

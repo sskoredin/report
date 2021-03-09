@@ -68,7 +68,7 @@ github.com/robfig/cron
 # github.com/sirupsen/logrus v1.8.1
 ## explicit
 github.com/sirupsen/logrus
-# github.com/sskoredin/config v0.0.0-20210309220158-1792034980be
+# github.com/sskoredin/config v0.0.0-20210309225412-e7b8db3f57c8
 ## explicit
 github.com/sskoredin/config
 # github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412
