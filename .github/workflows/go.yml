@@ -18,9 +18,6 @@ jobs:
       with:
         go-version: 1.15
 
-    - name: Vendor
-      run: go mod vendor
-    
     - name: Build
       run: go build -v ./...
 
