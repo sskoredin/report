@@ -50,7 +50,7 @@ func ReportName(start, end string) string {
 		year = e.Year()
 	}
 	name := fmt.Sprintf("./%d.%d.xlsx", month, year)
-	return fmt.Sprintf("%s\\%s", "C:\\Program Files\\iikoReporter\\reports", name)
+	return fmt.Sprintf("%s\\%s", "C:\\Program Files\\iikoIntegration\\reports", name)
 }
 
 func (rep Report) ToXlsx(start, end string) error {
@@ -83,7 +83,7 @@ func (rep Report) ToXlsx(start, end string) error {
 	for i := range headers {
 		setValue(headersRows, headers[i])
 	}
-	for i, _ := range s.Cols {
+	for i := range s.Cols {
 		if in([]int{2, 4, 6, 8}, i) {
 			s.Cols[i].Width = 25
 		}

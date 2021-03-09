@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	logfile = "C:\\Program Files\\iikoReporter\\app.log"
+	logfile = "C:\\Program Files\\iikoIntegration\\app.log"
 )
 
 type Logger struct {
@@ -16,7 +16,7 @@ type Logger struct {
 
 func New(name string, level logrus.Level) Logger {
 	log := logrus.New()
-	file := checkFile(name)
+	file := checkFile()
 	log.SetLevel(level)
 	log.SetFormatter(&nested.Formatter{
 		HideKeys: true,
@@ -30,7 +30,7 @@ func New(name string, level logrus.Level) Logger {
 	return Logger{log.WithField("method", name)}
 }
 
-func checkFile(name string) string {
+func checkFile() string {
 	_, err := os.Stat(logfile)
 	if os.IsNotExist(err) {
 		if _, err := os.Create(logfile); err != nil {
