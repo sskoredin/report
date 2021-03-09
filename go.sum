@@ -177,10 +177,14 @@ github.com/sskoredin/config v0.0.0-20210309153923-4e6d33967b44 h1:TIdBPKYTDPe1v8
 github.com/sskoredin/config v0.0.0-20210309153923-4e6d33967b44/go.mod h1:zQiAH92ovzH7Ee2ErnwNQFz7gzLDZiqnRSwn/7F9Bb0=
 github.com/sskoredin/config v0.0.0-20210309161207-ba55002ff5c8 h1:0GbA2v4WczaOkVbtTFzIYWB8wgnI301mODZhKmJdfsk=
 github.com/sskoredin/config v0.0.0-20210309161207-ba55002ff5c8/go.mod h1:zQiAH92ovzH7Ee2ErnwNQFz7gzLDZiqnRSwn/7F9Bb0=
+github.com/sskoredin/config v0.0.0-20210309170435-62c79be72ea2 h1:FrvSH1/F8Cdt+9Y/8v4qClNaj9zv2wbJaPX85bynZIo=
+github.com/sskoredin/config v0.0.0-20210309170435-62c79be72ea2/go.mod h1:zQiAH92ovzH7Ee2ErnwNQFz7gzLDZiqnRSwn/7F9Bb0=
 github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412 h1:jGuy1wkBC64rXwqPZ5h99Yep+blPtrBITdKTPzBM478=
 github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412/go.mod h1:pweJppd51UMtZyjtXA2QmQ/hA5tjRY3YmHpcoHI9Hac=
 github.com/sskoredin/telegram_client v0.0.0-20210309154645-4a3727b26ee9 h1:h2c+BF+XZTjweSTcBsf0y6CIq7s8hLLbwpfp5xmy5ps=
 github.com/sskoredin/telegram_client v0.0.0-20210309154645-4a3727b26ee9/go.mod h1:Kv9IxmnaCsOnDfQeb/f1wiU5sr36BYYnq1lPEThArcQ=
+github.com/sskoredin/telegram_client v0.0.0-20210309170723-c4d5b9d618bc h1:D6TaHBz8QOznH2220MPzQ//1zn2ccjRngFNak7z8ahE=
+github.com/sskoredin/telegram_client v0.0.0-20210309170723-c4d5b9d618bc/go.mod h1:Kv9IxmnaCsOnDfQeb/f1wiU5sr36BYYnq1lPEThArcQ=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.1.1/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=

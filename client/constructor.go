@@ -2,7 +2,7 @@ package client
 
 import (
 	"github.com/sskoredin/iiko_report/config"
-	"github.com/sskoredin/iiko_report/logger"
+	logger "github.com/sskoredin/telegram_client"
 )
 
 type Service struct {

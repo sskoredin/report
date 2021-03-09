@@ -2,9 +2,9 @@ package app
 
 import (
 	"github.com/sskoredin/iiko_report/daemon"
-	"github.com/sskoredin/iiko_report/logger"
 	"github.com/sskoredin/iiko_report/report"
 	"github.com/sskoredin/iiko_report/rest"
+	logger "github.com/sskoredin/telegram_client"
 	"golang.org/x/sync/errgroup"
 )
 

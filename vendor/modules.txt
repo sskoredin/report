@@ -68,12 +68,12 @@ github.com/robfig/cron
 # github.com/sirupsen/logrus v1.8.1
 ## explicit
 github.com/sirupsen/logrus
-# github.com/sskoredin/config v0.0.0-20210309161207-ba55002ff5c8
+# github.com/sskoredin/config v0.0.0-20210309170435-62c79be72ea2
 ## explicit
 github.com/sskoredin/config
 # github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412
 ## explicit
-# github.com/sskoredin/telegram_client v0.0.0-20210309154645-4a3727b26ee9
+# github.com/sskoredin/telegram_client v0.0.0-20210309170723-c4d5b9d618bc
 ## explicit
 github.com/sskoredin/telegram_client
 # github.com/stretchr/testify v1.6.1
