@@ -2,12 +2,11 @@ package app
 
 import (
 	"github.com/sirupsen/logrus"
+	"github.com/sskoredin/iiko_report/daemon"
+	"github.com/sskoredin/iiko_report/logger"
+	"github.com/sskoredin/iiko_report/report"
+	"github.com/sskoredin/iiko_report/rest"
 	"golang.org/x/sync/errgroup"
-	"mail/config"
-	"mail/daemon"
-	"mail/logger"
-	"mail/report"
-	"mail/rest"
 )
 
 type App struct {

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"github.com/BurntSushi/toml"
 	"github.com/sirupsen/logrus"
+	"github.com/sskoredin/iiko_report/config"
+	"github.com/sskoredin/iiko_report/converter"
+	"github.com/sskoredin/iiko_report/logger"
 	mv2 "gopkg.in/mail.v2"
 	"io/ioutil"
-	"mail/config"
-	"mail/converter"
-	"mail/logger"
 	"os"
 )
 

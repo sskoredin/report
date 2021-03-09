@@ -1,10 +1,10 @@
 package report
 
 import (
+	"github.com/sskoredin/iiko_report/client"
+	"github.com/sskoredin/iiko_report/converter"
+	"github.com/sskoredin/iiko_report/mail"
 	"log"
-	"mail/client"
-	"mail/converter"
-	"mail/mail"
 	"time"
 )
 

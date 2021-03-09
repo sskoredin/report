@@ -1,8 +1,8 @@
 package main
 
 import (
+	"github.com/sskoredin/iiko_report/app"
 	"log"
-	"mail/app"
 )
 
 func main() {
