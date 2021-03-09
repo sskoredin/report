@@ -30,5 +30,5 @@ func Check() error {
 }
 
 func FileName() string {
-	return "C:\\Program Files\\iikoReporter\\config.toml"
+	return "C:\\Program Files\\iikoIntegration\\config.toml"
 }
