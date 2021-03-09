@@ -24,10 +24,10 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/robfig/cron v1.2.0
 	github.com/sirupsen/logrus v1.8.1
-	github.com/sskoredin/config v0.0.0-20210309142814-484697c386ed
+	github.com/sskoredin/config v0.0.0-20210309143507-1d49323c1e2c
 	github.com/stretchr/testify v1.6.1 // indirect
 	github.com/tealeg/xlsx v1.0.5
-	golang.org/x/crypto v0.0.0-20200930160638-afb6bcd081ae // indirect
+	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83 // indirect
 	golang.org/x/net v0.0.0-20200930145003-4acb6c075d10 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20210309074719-68d13333faf2 // indirect

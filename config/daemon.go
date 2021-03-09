@@ -14,7 +14,7 @@ func (c Daemon) Read() error {
 	}
 
 	c.Timeout = 3600
-	c.Scheduler, err = client.Get(consul.DaemonOlapScheduler)
+	c.Scheduler, err = client.Get(consul.OlAPDaemonScheduler)
 	if err != nil {
 		return err
 	}

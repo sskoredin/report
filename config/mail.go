@@ -2,8 +2,6 @@ package config
 
 import (
 	consul "github.com/sskoredin/config"
-	"strconv"
-	"strings"
 )
 
 type Mail struct {
@@ -26,12 +24,10 @@ func (c *Mail) Read() error {
 	if err != nil {
 		return err
 	}
-	port, err := client.Get(consul.MailPort)
+	c.Port, err = client.GetInt(consul.MailPort)
 	if err != nil {
 		return err
 	}
-	c.Port, _ = strconv.Atoi(port)
-
 	c.User, err = client.Get(consul.MailLogin)
 	if err != nil {
 		return err
@@ -44,17 +40,14 @@ func (c *Mail) Read() error {
 	if err != nil {
 		return err
 	}
-	c.Subject, err = client.Get(consul.MailOLAPSubject)
+	c.Subject, err = client.Get(consul.OLAPMailSubject)
 	if err != nil {
 		return err
 	}
-	recipients, err := client.Get(consul.MailOLAPRecipients)
+	c.Recipients, err = client.GetArray(consul.OLAPMailRecipients)
 	if err != nil {
 		return err
 	}
-	recipients = strings.Trim(recipients, "[")
-	recipients = strings.Trim(recipients, "]")
-	c.Recipients = strings.Split(recipients, ",")
 
 	return nil
 }

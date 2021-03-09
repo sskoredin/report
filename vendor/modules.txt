@@ -1,3 +1,7 @@
+# github.com/AlecAivazis/survey/v2 v2.2.8
+## explicit
+# github.com/Masterminds/semver/v3 v3.1.1
+## explicit
 # github.com/antonfisher/nested-logrus-formatter v1.3.1
 ## explicit
 github.com/antonfisher/nested-logrus-formatter
@@ -47,6 +51,8 @@ github.com/jinzhu/now
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.12
 github.com/mattn/go-isatty
+# github.com/mgutz/ansi v0.0.0-20200706080929-d51e80ef957d
+## explicit
 # github.com/miekg/dns v1.1.31
 ## explicit
 # github.com/mitchellh/go-homedir v1.1.0
@@ -56,6 +62,8 @@ github.com/mitchellh/go-homedir
 # github.com/mitchellh/mapstructure v1.4.1
 ## explicit
 github.com/mitchellh/mapstructure
+# github.com/oligot/go-mod-upgrade v0.4.0
+## explicit
 # github.com/pkg/errors v0.9.1
 ## explicit
 github.com/pkg/errors
@@ -65,7 +73,7 @@ github.com/robfig/cron
 # github.com/sirupsen/logrus v1.8.1
 ## explicit
 github.com/sirupsen/logrus
-# github.com/sskoredin/config v0.0.0-20210309142814-484697c386ed
+# github.com/sskoredin/config v0.0.0-20210309143507-1d49323c1e2c
 ## explicit
 github.com/sskoredin/config
 # github.com/stretchr/testify v1.6.1
@@ -73,7 +81,7 @@ github.com/sskoredin/config
 # github.com/tealeg/xlsx v1.0.5
 ## explicit
 github.com/tealeg/xlsx
-# golang.org/x/crypto v0.0.0-20200930160638-afb6bcd081ae
+# golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
 ## explicit
 # golang.org/x/net v0.0.0-20200930145003-4acb6c075d10
 ## explicit
@@ -85,6 +93,10 @@ golang.org/x/sync/errgroup
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
 golang.org/x/sys/windows
+# golang.org/x/term v0.0.0-20210220032956-6a3ed077a48d
+## explicit
+# golang.org/x/text v0.3.5
+## explicit
 # gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc
 ## explicit
 gopkg.in/alexcesaro/quotedprintable.v3

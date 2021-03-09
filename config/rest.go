@@ -3,7 +3,6 @@ package config
 import (
 	"fmt"
 	consul "github.com/sskoredin/config"
-	"strconv"
 )
 
 type Rest struct {
@@ -23,11 +22,9 @@ func (r Rest) Read() error {
 	if err != nil {
 		return err
 	}
-	port, err := client.Get(consul.OLAPRestPort)
-	p, err := strconv.Atoi(port)
+	r.Port, err = client.GetInt(consul.OLAPRestPort)
 	if err != nil {
 		return err
 	}
-	r.Port = p
 	return nil
 }
