@@ -39,10 +39,6 @@ golang.org/x/sync/errgroup
 ## explicit
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-golang.org/x/sys/windows/registry
-golang.org/x/sys/windows/svc
-golang.org/x/sys/windows/svc/eventlog
-golang.org/x/sys/windows/svc/mgr
 # gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc
 ## explicit
 gopkg.in/alexcesaro/quotedprintable.v3
