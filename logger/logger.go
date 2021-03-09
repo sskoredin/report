@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	logfile = "C:\\Program Files\\iikoIntegration\\app.log"
+	logfile = "./app.log"
 )
 
 type Logger struct {
