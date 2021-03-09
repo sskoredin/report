@@ -6,8 +6,4 @@ import (
 
 type Config struct {
 	client consul.ConsulClient
-	Conf
-}
-type Conf interface {
-	Read() error
 }
