@@ -3,7 +3,6 @@ package client
 import (
 	"github.com/BurntSushi/toml"
 	"github.com/sirupsen/logrus"
-	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/logger"
 	"io/ioutil"
 	"os"

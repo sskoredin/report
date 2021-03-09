@@ -19,29 +19,17 @@ import (
 )
 
 type Rest struct {
-	Configfile string
-	logger     logger.Logger
-	config     config.Rest
+	logger logger.Logger
+	config config.Rest
 }
 
 func New() Rest {
 	return Rest{
-		logger:     logger.New("api", logrus.DebugLevel),
-		Configfile: config.FileName(),
+		logger: logger.New("api", logrus.DebugLevel),
 	}
 }
 func (r *Rest) readConfig() error {
-	var c config.Config
-	if _, err := os.Stat(r.Configfile); err != nil {
-		return err
-	}
-	v, err := ioutil.ReadFile(r.Configfile)
-	if err != nil {
-		return err
-	}
-	if err := toml.Unmarshal(v, &c); err != nil {
-		return err
-	}
+
 	r.config = c.Rest
 	return nil
 }

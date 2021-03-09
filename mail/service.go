@@ -3,26 +3,23 @@ package mail
 import (
 	"errors"
 	"fmt"
-	"github.com/BurntSushi/toml"
 	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/converter"
 	"github.com/sskoredin/iiko_report/logger"
 	mv2 "gopkg.in/mail.v2"
-	"io/ioutil"
 	"os"
 )
 
 type Service struct {
 	Configfile string
-	config     config.Mail
+	config     *config.MailConfig
 	logger     logger.Logger
 }
 
 func New() Service {
 	return Service{
-		Configfile: config.FileName(),
-		logger:     logger.New("mail", logrus.DebugLevel),
+		logger: logger.New("mail", logrus.DebugLevel),
 	}
 }
 
@@ -35,18 +32,11 @@ func (s Service) Send(start, end string) error {
 }
 
 func (s *Service) readConfig() error {
-	var c config.Config
-	if _, err := os.Stat(s.Configfile); err != nil {
-		return err
-	}
-	v, err := ioutil.ReadFile(s.Configfile)
+	c, err := config.GetMail()
 	if err != nil {
 		return err
 	}
-	if err := toml.Unmarshal(v, &c); err != nil {
-		return err
-	}
-	s.config = c.Mail
+	s.config = c
 	return nil
 }
 

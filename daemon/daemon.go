@@ -4,7 +4,6 @@ import (
 	"github.com/BurntSushi/toml"
 	"github.com/robfig/cron"
 	"github.com/sirupsen/logrus"
-	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/report"
 	"io/ioutil"
 	"log"
