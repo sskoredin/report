@@ -5,6 +5,13 @@ const (
 	TelegramXAuthToken = "telegram_xauth-token"
 	TelegramURL        = "telegram_url"
 
+	FTPHost     = "ftp_host"
+	FTPPort     = "ftp_port"
+	FTPUser     = "ftp_user"
+	FTPPassword = "ftp_password"
+	FTPPath     = "ftp_path"
+	FTPFile     = "ftp_file"
+
 	OLAPRestHost = "rest_host"
 	OLAPRestPort = "rest_port"
 	IikoAPIURl   = "api_iiko_url"
@@ -22,6 +29,7 @@ const (
 	AmountMailSubject    = "mail_amount_subject"
 	AmountMailRecipients = "mail_amount_recipients"
 
-	OlAPDaemonScheduler   = "Daemon_olap_scheduler"
-	AmountDaemonScheduler = "Daemon_amount_scheduler"
+	OlAPDaemonScheduler        = "Daemon_olap_scheduler"
+	AmountDaemonScheduler      = "Daemon_amount_scheduler"
+	IntegrationDaemonScheduler = "Daemon_integration_scheduler"
 )

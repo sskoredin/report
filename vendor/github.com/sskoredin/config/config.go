@@ -19,7 +19,9 @@ type cClient struct {
 
 func NewClient() (*cClient, error) {
 	// Get a new client
-	client, err := api.NewClient(api.DefaultConfig())
+	config := api.DefaultConfig()
+	config.Address = "consul:8600"
+	client, err := api.NewClient(config)
 	if err != nil {
 		return nil, err
 	}

@@ -1,17 +1,24 @@
 package telegram_client
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"github.com/pkg/errors"
 	"github.com/sskoredin/config"
 	"log"
 	"net/http"
-	"strings"
+	"os"
+	"path"
 )
 
 type Client struct {
 	token string
 	url   string
+}
+
+type Message struct {
+	Msg string `json:"msg"`
 }
 
 func NewLogger() (*Client, error) {
@@ -88,14 +95,24 @@ func (l Logger) Error(msg ...interface{}) error {
 }
 
 func (l Logger) convert(level string, msg ...interface{}) string {
-	return fmt.Sprintf("iiko_olap_report\n[%s][%s]\n%v", l.name, level, msg)
+	return fmt.Sprintf("%s\n[%s][%s]\n%v", programname(), l.name, level, msg)
+}
+
+func programname() string {
+	dir, _ := os.Getwd()
+	return path.Base(dir)
 }
 
 func (c Client) send(msg string) error {
-	payload := strings.NewReader(msg)
 	client := &http.Client{}
-
-	req, err := http.NewRequest(http.MethodPost, c.url, payload)
+	mes := Message{
+		Msg: msg,
+	}
+	data, err := json.Marshal(mes)
+	if err != nil {
+		return err
+	}
+	req, err := http.NewRequest(http.MethodPost, "http://"+c.url, bytes.NewReader(data))
 	if err != nil {
 		return err
 	}
