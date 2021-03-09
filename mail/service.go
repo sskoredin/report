@@ -13,7 +13,7 @@ import (
 
 type Service struct {
 	Configfile string
-	config     *config.MailConfig
+	config     config.Mail
 	logger     logger.Logger
 }
 
@@ -24,20 +24,11 @@ func New() Service {
 }
 
 func (s Service) Send(start, end string) error {
-	err := s.readConfig()
+	err := s.config.Read()
 	if err != nil {
 		return err
 	}
 	return s.send(start, end)
-}
-
-func (s *Service) readConfig() error {
-	c, err := config.GetMail()
-	if err != nil {
-		return err
-	}
-	s.config = c
-	return nil
 }
 
 func (s Service) send(start, end string) error {

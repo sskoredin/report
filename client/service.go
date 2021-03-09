@@ -16,8 +16,7 @@ import (
 )
 
 func (s Service) Collect(st, e string) (*ResponseData, error) {
-	err := s.readConfig()
-	if err != nil {
+	if err := s.config.Read(); err != nil {
 		return nil, err
 	}
 

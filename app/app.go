@@ -20,12 +20,9 @@ func New() App {
 }
 
 func (a App) Run() error {
-	if err := config.Check(); err != nil {
-		a.logger.Error(err)
-		return err
-	}
+
 	r := rest.New()
-	d := daemon.New(config.FileName())
+	d := daemon.New()
 	var g errgroup.Group
 	g.Go(r.Run)
 	g.Go(d.Run)
@@ -33,10 +30,6 @@ func (a App) Run() error {
 }
 
 func (a App) Send() error {
-	if err := config.Check(); err != nil {
-		a.logger.Error(err)
-		return err
-	}
 	if err := report.MakeReportWithAttempts("", "", 0); err != nil {
 		a.logger.Error(err)
 		return err

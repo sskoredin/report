@@ -3,13 +3,11 @@ package rest
 import (
 	"context"
 	"fmt"
-	"github.com/BurntSushi/toml"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/logger"
 	"github.com/sskoredin/iiko_report/report"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"os/signal"
@@ -28,15 +26,10 @@ func New() Rest {
 		logger: logger.New("api", logrus.DebugLevel),
 	}
 }
-func (r *Rest) readConfig() error {
-
-	r.config = c.Rest
-	return nil
-}
 
 func (r Rest) Run() error {
 	r.logger.Debug("Starting web server...")
-	if err := r.readConfig(); err != nil {
+	if err := r.config.Read(); err != nil {
 		return err
 	}
 
