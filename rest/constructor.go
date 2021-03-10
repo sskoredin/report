@@ -1,17 +1,17 @@
-package client
+package rest
 
 import (
 	"github.com/sskoredin/config/configs"
 	logger "github.com/sskoredin/telegram_client"
 )
 
-type Service struct {
-	config configs.Client
+type Rest struct {
 	logger *logger.Logger
+	config configs.Rest
 }
 
-func New() Service {
-	return Service{
-		logger: logger.New("client"),
+func New() Rest {
+	return Rest{
+		logger: logger.New("api"),
 	}
 }

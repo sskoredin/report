@@ -4,24 +4,10 @@ import (
 	"errors"
 	"fmt"
 	"github.com/sirupsen/logrus"
-	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/converter"
-	logger "github.com/sskoredin/telegram_client"
 	mv2 "gopkg.in/mail.v2"
 	"os"
 )
-
-type Service struct {
-	Configfile string
-	config     config.Mail
-	logger     *logger.Logger
-}
-
-func New() Service {
-	return Service{
-		logger: logger.New("mail"),
-	}
-}
 
 func (s Service) Send(start, end string) error {
 	err := s.config.Read()

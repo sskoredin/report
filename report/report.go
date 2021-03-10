@@ -4,21 +4,22 @@ import (
 	"github.com/sskoredin/iiko_report/client"
 	"github.com/sskoredin/iiko_report/converter"
 	"github.com/sskoredin/iiko_report/mail"
-	"log"
 	"time"
 )
 
 func MakeReportWithAttempts(start, end string, attempt int) error {
-	log.Println("start process", attempt)
-	return makeReport(start, end, attempt)
+	r := New()
+	r.logger.Info("start process", attempt)
+	return r.makeReport(start, end, attempt)
 }
 
-func makeReport(start, end string, attempt int) error {
+func (r Report) makeReport(start, end string, attempt int) error {
 	cli := client.New()
+
 	resp, err := cli.Collect(start, end)
 	if err != nil {
 		if attempt >= 5 {
-			log.Println("max attempts")
+			r.logger.Info("max attempts")
 			return err
 		}
 		time.Sleep(10 * time.Minute)
@@ -27,16 +28,20 @@ func makeReport(start, end string, attempt int) error {
 			return err
 		}
 	}
+
 	if resp == nil {
-		log.Println("Empty response")
+		r.logger.Warn("Empty response")
 		return nil
 	}
+
 	report := converter.Convert(resp)
-	log.Println("response converted ")
+
+	r.logger.Debug("response converted ")
+
 	if err := report.ToXlsx(start, end); err != nil {
 		return err
 	}
-	log.Println("report prepared")
+	r.logger.Debug("report prepared")
 
 	return sendReport(start, end)
 }

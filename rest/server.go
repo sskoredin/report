@@ -4,9 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/gorilla/mux"
-	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/report"
-	logger "github.com/sskoredin/telegram_client"
 	"net/http"
 	"os"
 	"os/signal"
@@ -14,17 +12,6 @@ import (
 
 	"github.com/pkg/errors"
 )
-
-type Rest struct {
-	logger *logger.Logger
-	config config.Rest
-}
-
-func New() Rest {
-	return Rest{
-		logger: logger.New("api"),
-	}
-}
 
 func (r Rest) Run() error {
 	r.logger.Debug("Starting web server...")

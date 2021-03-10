@@ -1,4 +1,4 @@
-package client
+package mail
 
 import (
 	"github.com/sskoredin/config/configs"
@@ -6,12 +6,13 @@ import (
 )
 
 type Service struct {
-	config configs.Client
-	logger *logger.Logger
+	Configfile string
+	config     configs.MailOlap
+	logger     *logger.Logger
 }
 
 func New() Service {
 	return Service{
-		logger: logger.New("client"),
+		logger: logger.New("mail"),
 	}
 }

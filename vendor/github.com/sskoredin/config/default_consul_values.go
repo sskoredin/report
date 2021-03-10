@@ -34,8 +34,8 @@ var defaultValues = map[string]string{
 	OLAPMailRecipients: "[\"sergey@skoredin.pro\"]",
 
 	//Amount report
-	AmountMailSubject:    "mail_amount_subject",
-	AmountMailRecipients: "mail_amount_recipients",
+	AmountMailSubject:    "OLAP Ostatki v minuse report iiko",
+	AmountMailRecipients: "[\"sergey@skoredin.pro\"]",
 
 	//Daemons
 	OlAPDaemonScheduler:        "0 9 * * *",

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/sskoredin/iiko_report/app"
-	"log"
+	logger "github.com/sskoredin/telegram_client"
 )
 
 func main() {
@@ -11,8 +11,9 @@ func main() {
 
 func runApp() {
 	a := app.New()
+	l := logger.New("main")
 	if err := a.Run(); err != nil {
-		log.Println(err)
+		l.Error(err.Error())
 		return
 	}
 }

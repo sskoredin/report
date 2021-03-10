@@ -1,14 +1,14 @@
 package daemon
 
 import (
+	"github.com/sskoredin/config/configs"
 	"github.com/sskoredin/iiko_report/client"
-	"github.com/sskoredin/iiko_report/config"
 	"github.com/sskoredin/iiko_report/mail"
 	logger "github.com/sskoredin/telegram_client"
 )
 
 type Daemon struct {
-	config        config.Daemon
+	config        configs.DaemonOlap
 	logger        *logger.Logger
 	clientService client.Service
 	mailService   mail.Service
