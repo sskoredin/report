@@ -11,7 +11,7 @@ var defaultValues = map[string]string{
 	FTPPort:     "21",
 	FTPUser:     "davido01_skor",
 	FTPPassword: "uLigERaOUpEliSChI1",
-	FTPPath:     "davidoff-bronnaya.ru/auto",
+	FTPPath:     "davidoff-bronnaya.ru/docs/auto",
 	FTPFile:     "import.csv",
 
 	//REST
@@ -40,5 +40,5 @@ var defaultValues = map[string]string{
 	//Daemons
 	OlAPDaemonScheduler:        "0 9 * * *",
 	AmountDaemonScheduler:      "0 9 * * *",
-	IntegrationDaemonScheduler: "0 10 * * *",
+	IntegrationDaemonScheduler: "0 9 * * *",
 }
