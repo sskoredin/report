@@ -49,8 +49,7 @@ func ReportName(start, end string) string {
 		month = e.Month()
 		year = e.Year()
 	}
-	name := fmt.Sprintf("./%d.%d.xlsx", month, year)
-	return fmt.Sprintf("%s\\%s", "./", name)
+	return fmt.Sprintf("./%d.%d.xlsx", month, year)
 }
 
 func (rep Report) ToXlsx(start, end string) error {
