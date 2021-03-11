@@ -3,6 +3,7 @@ package config
 import (
 	"github.com/hashicorp/consul/api"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -78,6 +79,10 @@ func (c cClient) GetArray(key string) ([]string, error) {
 }
 
 func (c cClient) Set(key string, value string) error {
+	if err := c.updateEnv(key, value); err != nil {
+		return err
+	}
+
 	// Get a handle to the KV API
 	kv := c.client.KV()
 
@@ -88,4 +93,16 @@ func (c cClient) Set(key string, value string) error {
 		return err
 	}
 	return nil
+}
+
+func (c cClient) updateEnv(key, value string) error {
+	if value == "" {
+		return nil
+	}
+
+	if os.Getenv(key) == value {
+		return nil
+	}
+
+	return os.Setenv(key, value)
 }
