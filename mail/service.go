@@ -24,12 +24,14 @@ func (s Service) send(start, end string) error {
 	if _, err := os.Stat(filename); os.IsNotExist(err) {
 		return errors.New("Have no attachment ")
 	}
+
 	d := mv2.NewDialer(s.config.Host, s.config.Port, s.config.User, s.config.Password)
 	d.StartTLSPolicy = mv2.MandatoryStartTLS
 	sm, err := d.Dial()
 	if err != nil {
 		return err
 	}
+
 	for _, recipient := range s.config.Recipients {
 		m := mv2.NewMessage()
 		m.SetAddressHeader("From", s.config.User, "robot")
