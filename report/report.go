@@ -25,6 +25,7 @@ func (r Report) makeReport(start, end string, attempt int) error {
 		time.Sleep(10 * time.Minute)
 		attempt++
 		if err := MakeReportWithAttempts(start, end, attempt); err != nil {
+			r.logger.Error(err)
 			return err
 		}
 	}
