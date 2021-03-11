@@ -45,7 +45,7 @@ func (c cClient) Get(key string) (string, error) {
 			if err := c.Set(key, value); err != nil {
 				return "", err
 			} else {
-				log.Fatalf("Not found value for  %s", key)
+				log.Printf("Not found value for  %s", key)
 			}
 		}
 	} else {

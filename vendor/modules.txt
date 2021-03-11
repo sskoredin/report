@@ -68,7 +68,7 @@ github.com/robfig/cron
 # github.com/sirupsen/logrus v1.8.1
 ## explicit
 github.com/sirupsen/logrus
-# github.com/sskoredin/config v0.0.0-20210311105339-adab4c906674
+# github.com/sskoredin/config v0.0.0-20210311114419-c87055c20281
 ## explicit
 github.com/sskoredin/config
 github.com/sskoredin/config/configs
