@@ -1,44 +1,46 @@
 package config
 
+import "os"
+
 var defaultValues = map[string]string{
 	//Telegram
-	TelegramChatIDS:    "492307185",
-	TelegramXAuthToken: "",
-	TelegramURL:        "logger:3250",
+	TelegramChatIDS:    os.Getenv(TelegramChatIDS),
+	TelegramXAuthToken: os.Getenv(TelegramXAuthToken),
+	TelegramURL:        os.Getenv(TelegramURL),
 
 	//FTP
-	FTPHost:     "ftp.davido01.nichost.ru",
-	FTPPort:     "21",
-	FTPUser:     "davido01_skor",
-	FTPPassword: "uLigERaOUpEliSChI1",
-	FTPPath:     "davidoff-bronnaya.ru/docs/auto",
-	FTPFile:     "import.csv",
+	FTPHost:     os.Getenv(FTPHost),
+	FTPPort:     os.Getenv(FTPPort),
+	FTPUser:     os.Getenv(FTPUser),
+	FTPPassword: os.Getenv(FTPPassword),
+	FTPPath:     os.Getenv(FTPPath),
+	FTPFile:     os.Getenv(FTPFile),
 
 	//REST
-	OLAPRestHost: "0.0.0.0",
-	OLAPRestPort: "8230",
+	OLAPRestHost: os.Getenv(OLAPRestHost),
+	OLAPRestPort: os.Getenv(OLAPRestPort),
 	//Iiko
-	IikoAPIURl:   "http://94.127.179.181:9081",
-	IikoLogin:    "Yakupov",
-	IikoPassword: "1Qz2876",
+	IikoAPIURl:   os.Getenv(IikoAPIURl),
+	IikoLogin:    os.Getenv(IikoLogin),
+	IikoPassword: os.Getenv(IikoPassword),
 
 	//Mail
-	MailHost:      "mail.nic.ru",
-	MailPort:      "587",
-	MailLogin:     "robot@davidoffclub.ru",
-	MailPassword:  "SwITERyCHEwConoT1",
-	MailAddressee: "robot",
+	MailHost:      os.Getenv(MailHost),
+	MailPort:      os.Getenv(MailPort),
+	MailLogin:     os.Getenv(MailLogin),
+	MailPassword:  os.Getenv(MailPassword),
+	MailAddressee: os.Getenv(MailAddressee),
 
 	//OLAP report
-	OLAPMailSubject:    "OLAP report",
-	OLAPMailRecipients: "[\"sergey@skoredin.pro\"]",
+	OLAPMailSubject:    os.Getenv(OLAPMailSubject),
+	OLAPMailRecipients: os.Getenv(OLAPMailRecipients),
 
 	//Amount report
-	AmountMailSubject:    "OLAP Ostatki v minuse report iiko",
-	AmountMailRecipients: "[\"sergey@skoredin.pro\"]",
+	AmountMailSubject:    os.Getenv(AmountMailSubject),
+	AmountMailRecipients: os.Getenv(AmountMailRecipients),
 
 	//Daemons
-	OlAPDaemonScheduler:        "0 9 * * *",
-	AmountDaemonScheduler:      "0 9 * * *",
-	IntegrationDaemonScheduler: "0 9 * * *",
+	OlAPDaemonScheduler:        os.Getenv(OlAPDaemonScheduler),
+	AmountDaemonScheduler:      os.Getenv(AmountDaemonScheduler),
+	IntegrationDaemonScheduler: os.Getenv(IntegrationDaemonScheduler),
 }

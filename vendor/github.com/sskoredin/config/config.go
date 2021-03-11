@@ -2,6 +2,7 @@ package config
 
 import (
 	"github.com/hashicorp/consul/api"
+	"log"
 	"strconv"
 	"strings"
 )
@@ -19,13 +20,12 @@ type cClient struct {
 
 func NewClient() (*cClient, error) {
 	// Get a new client
-
 	client, err := api.NewClient(api.DefaultConfig())
 	if err != nil {
 		return nil, err
 	}
 	return &cClient{
-		client,
+		client: client,
 	}, err
 }
 
@@ -43,6 +43,8 @@ func (c cClient) Get(key string) (string, error) {
 			value = v
 			if err := c.Set(key, value); err != nil {
 				return "", err
+			} else {
+				log.Fatalf("Not found value for  %s", key)
 			}
 		}
 	} else {
@@ -63,6 +65,7 @@ func (c cClient) GetInt(key string) (int, error) {
 	}
 	return i, nil
 }
+
 func (c cClient) GetArray(key string) ([]string, error) {
 	array, err := c.Get(key)
 	if err != nil {

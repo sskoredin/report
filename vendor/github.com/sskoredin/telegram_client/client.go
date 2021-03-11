@@ -58,6 +58,7 @@ func New(name string) *Logger {
 	}
 }
 func (l Logger) Info(msg ...interface{}) error {
+	log.Print()
 	return l.send(l.convert("Info", msg))
 }
 

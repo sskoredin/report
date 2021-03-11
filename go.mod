@@ -26,7 +26,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/robfig/cron v1.2.0
 	github.com/sirupsen/logrus v1.8.1
-	github.com/sskoredin/config v0.0.0-20210310083845-53c7f5241514
+	github.com/sskoredin/config v0.0.0-20210311101232-0910b8932e9b
 	github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412 // indirect
 	github.com/sskoredin/telegram_client v0.0.0-20210309203107-58eb7ac8972e
 	github.com/stretchr/testify v1.6.1 // indirect
