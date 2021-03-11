@@ -40,6 +40,7 @@ func (r Report) makeReport(start, end string, attempt int) error {
 	r.logger.Debug("response converted ")
 
 	if err := report.ToXlsx(start, end); err != nil {
+		r.logger.Error(err)
 		return err
 	}
 	r.logger.Debug("report prepared")
