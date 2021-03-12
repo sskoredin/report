@@ -18,7 +18,7 @@ func init() {
 
 func main() {
 	log := logger.New("main")
-	log.Infof("Start iiko report at %v", time.Now().String())
+	log.Infof("Start at %v", time.Now().String())
 
 	if err := runApp(); err != nil {
 		log.Fatal(err)
