@@ -2,13 +2,13 @@ package converter
 
 import (
 	"fmt"
-	"github.com/sskoredin/iiko_report/client"
+	iiko_client "github.com/sskoredin/connector/iiko"
 	"github.com/tealeg/xlsx"
 	"sort"
 	"time"
 )
 
-func Convert(responseData *client.ResponseData) Report {
+func Convert(responseData *iiko_client.ResponseIikoOlAPReportData) Report {
 	if responseData == nil {
 		return nil
 	}

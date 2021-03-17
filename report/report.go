@@ -1,7 +1,8 @@
 package report
 
 import (
-	"github.com/sskoredin/iiko_report/client"
+	"github.com/sskoredin/connector"
+	period "github.com/sskoredin/connector/period"
 	"github.com/sskoredin/iiko_report/converter"
 	"github.com/sskoredin/iiko_report/mail"
 	"time"
@@ -14,9 +15,12 @@ func MakeReportWithAttempts(start, end string, attempt int) error {
 }
 
 func (r Report) makeReport(start, end string, attempt int) error {
-	cli := client.New()
+	cli, err := connector.NewIikoClient()
+	if err != nil {
+		return err
+	}
 
-	resp, err := cli.Collect(start, end)
+	resp, err := cli.CollectIikoOLAPReport(period.ReportPeriod{Start: start, End: end})
 	if err != nil {
 		if attempt >= 5 {
 			r.logger.Info("max attempts")

@@ -16,7 +16,7 @@ require (
 	github.com/hashicorp/go-sockaddr v1.0.2 // indirect
 	github.com/hashicorp/go-uuid v1.0.2 // indirect
 	github.com/hashicorp/golang-lru v0.5.4 // indirect
-	github.com/jinzhu/now v1.1.1
+	github.com/jinzhu/now v1.1.1 // indirect
 	github.com/kr/pretty v0.2.1 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/labstack/gommon v0.3.0 // indirect
@@ -27,6 +27,7 @@ require (
 	github.com/robfig/cron v1.2.0
 	github.com/sirupsen/logrus v1.8.1
 	github.com/sskoredin/config v0.0.0-20210311114419-c87055c20281
+	github.com/sskoredin/connector v0.0.0-20210317152616-39370a820e30
 	github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412 // indirect
 	github.com/sskoredin/telegram_client v0.0.0-20210309203107-58eb7ac8972e
 	github.com/stretchr/testify v1.6.1 // indirect

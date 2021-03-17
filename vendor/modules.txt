@@ -40,6 +40,8 @@ github.com/hashicorp/serf/coordinate
 # github.com/jinzhu/now v1.1.1
 ## explicit
 github.com/jinzhu/now
+# github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
+github.com/jlaffaye/ftp
 # github.com/kr/pretty v0.2.1
 ## explicit
 # github.com/kr/text v0.2.0
@@ -72,6 +74,13 @@ github.com/sirupsen/logrus
 ## explicit
 github.com/sskoredin/config
 github.com/sskoredin/config/configs
+# github.com/sskoredin/connector v0.0.0-20210317152616-39370a820e30
+## explicit
+github.com/sskoredin/connector
+github.com/sskoredin/connector/ftp
+github.com/sskoredin/connector/iiko
+github.com/sskoredin/connector/iiko/query
+github.com/sskoredin/connector/period
 # github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412
 ## explicit
 # github.com/sskoredin/telegram_client v0.0.0-20210309203107-58eb7ac8972e

@@ -89,6 +89,8 @@ github.com/hashicorp/serf v0.9.5 h1:EBWvyu9tcRszt3Bxp3KNssBMP1KuHWyO51lz9+786iM=
 github.com/hashicorp/serf v0.9.5/go.mod h1:UWDWwZeL5cuWDJdl0C6wrvrUwEqtQ4ZKBKKENpqIUyk=
 github.com/jinzhu/now v1.1.1 h1:g39TucaRWyV3dwDO++eEc6qf8TVIQ/Da48WmqjZ3i7E=
 github.com/jinzhu/now v1.1.1/go.mod h1:d3SSVoowX0Lcu0IBviAWJpolVfI5UJVZZ7cO71lE/z8=
+github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067 h1:P2S26PMwXl8+ZGuOG3C69LG4be5vHafUayZm9VPw3tU=
+github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067/go.mod h1:2lmrmq866uF2tnje75wQHzmPXhmSWUt7Gyx2vgK1RCU=
 github.com/json-iterator/go v1.1.6/go.mod h1:+SdeFBvtyEkXs7REEP0seUULqWtbJapLOCVDaaPEHmU=
 github.com/json-iterator/go v1.1.9/go.mod h1:KdQUCv79m/52Kvf8AW2vK1V8akMuk1QjK/uOdHXbAo4=
 github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7VTCxuUUipMqKk8s4w=
@@ -197,6 +199,8 @@ github.com/sskoredin/config v0.0.0-20210311105339-adab4c906674 h1:425hTcQZIC9qWQ
 github.com/sskoredin/config v0.0.0-20210311105339-adab4c906674/go.mod h1:mCcJzsa/Rl+7cOVS+wrBunCZyRA45sxjirzRKjuleJc=
 github.com/sskoredin/config v0.0.0-20210311114419-c87055c20281 h1:7iKwRFuSycFLTdvRAxZ0r2BGs+NDtTV9kZBhWyLPh5U=
 github.com/sskoredin/config v0.0.0-20210311114419-c87055c20281/go.mod h1:mCcJzsa/Rl+7cOVS+wrBunCZyRA45sxjirzRKjuleJc=
+github.com/sskoredin/connector v0.0.0-20210317152616-39370a820e30 h1:TDYIAq8M1LjQUB/PsBT+TPUHA3+h/s+xB1/FZqDomFE=
+github.com/sskoredin/connector v0.0.0-20210317152616-39370a820e30/go.mod h1:rkWj2ZadMIcaZ0ItUVgAICg+El3P4OZA/B4BDxJUqkI=
 github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412 h1:jGuy1wkBC64rXwqPZ5h99Yep+blPtrBITdKTPzBM478=
 github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412/go.mod h1:pweJppd51UMtZyjtXA2QmQ/hA5tjRY3YmHpcoHI9Hac=
 github.com/sskoredin/telegram_client v0.0.0-20210309154645-4a3727b26ee9 h1:h2c+BF+XZTjweSTcBsf0y6CIq7s8hLLbwpfp5xmy5ps=
