@@ -1,9 +1,11 @@
-package iiko_client
+package entity
 
 import (
 	"github.com/jinzhu/now"
 	"time"
 )
+
+const DateLayout = "2006-01-02"
 
 type ReportPeriod struct {
 	Start string

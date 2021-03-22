@@ -4,13 +4,13 @@ import (
 	consul "github.com/sskoredin/config"
 )
 
-type Client struct {
+type Iiko struct {
 	User     string `toml:"user" json:"user"`
 	Password string `toml:"password" json:"password"`
 	API      string `toml:"api" json:"api"`
 }
 
-func (c *Client) Read() error {
+func (c *Iiko) Read() error {
 	client, err := consul.NewClient()
 	if err != nil {
 		return err

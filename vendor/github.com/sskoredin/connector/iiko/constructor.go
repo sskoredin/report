@@ -7,7 +7,7 @@ import (
 
 type Service struct {
 	token  string
-	config configs.Client
+	config configs.Iiko
 	logger *logger.Logger
 }
 

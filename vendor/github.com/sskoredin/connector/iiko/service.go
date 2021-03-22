@@ -4,31 +4,26 @@ import (
 	"encoding/xml"
 	_ "encoding/xml"
 	"fmt"
-	"github.com/sskoredin/connector/iiko/query"
-	iikoclient "github.com/sskoredin/connector/period"
-	"io/ioutil"
-	"net/http"
-	"net/url"
-	"strings"
+	"github.com/sskoredin/connector/domain/entity"
+	"github.com/sskoredin/connector/query"
 )
 
 const (
-	olapReportUrl          = "/resto/api/reports/olap"
-	authUrl                = "/resto/api/auth"
-	errNotAuth             = "not authorized"
+	apiUrl        = "/resto/api"
+	olapReportUrl = apiUrl + "/reports/olap"
+	authUrl       = apiUrl + "/auth"
+
 	reportTypeSales        = "SALES"
 	reportTypeTransactions = "TRANSACTIONS"
 )
 
-func (s Service) CollectGoodsForFTP(period iikoclient.ReportPeriod) (*ResponseGoodsToFTPData, error) {
+func (s Service) CollectGoodsForFTP(period entity.ReportPeriod) (*ResponseGoodsToFTPData, error) {
 	if err := s.config.Read(); err != nil {
 		return nil, err
 	}
-
 	if err := s.auth(); err != nil {
 		return nil, err
 	}
-
 	if err := period.Parse(); err != nil {
 		return nil, err
 	}
@@ -36,15 +31,13 @@ func (s Service) CollectGoodsForFTP(period iikoclient.ReportPeriod) (*ResponseGo
 	return s.getGoodsToFTP(period)
 }
 
-func (s Service) CollectIikoOLAPReport(period iikoclient.ReportPeriod) (*ResponseIikoOlAPReportData, error) {
+func (s Service) CollectIikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPReportData, error) {
 	if err := s.config.Read(); err != nil {
 		return nil, err
 	}
-
 	if err := s.auth(); err != nil {
 		return nil, err
 	}
-
 	if err := period.Parse(); err != nil {
 		return nil, err
 	}
@@ -52,18 +45,18 @@ func (s Service) CollectIikoOLAPReport(period iikoclient.ReportPeriod) (*Respons
 	return s.iikoOLAPReport(period)
 }
 
-func (s Service) getGoodsToFTP(period iikoclient.ReportPeriod) (*ResponseGoodsToFTPData, error) {
-	params := query.New(s.token).
+func (s Service) getGoodsToFTP(period entity.ReportPeriod) (*ResponseGoodsToFTPData, error) {
+	q, err := query.New(s.link(olapReportUrl), s.token).
 		ReportType(reportTypeTransactions).
 		Period(period).
 		GroupRows("Product.Num").
-		Args("FinalBalance.Amount")
-
-	q, err := s.queryBuilder(olapReportUrl, params)
+		Args("FinalBalance.Amount").
+		Build()
 	if err != nil {
 		return nil, err
 	}
-	d, err := get(q)
+
+	d, err := q.Get()
 	if err != nil {
 		return nil, err
 	}
@@ -77,7 +70,7 @@ func (s Service) getGoodsToFTP(period iikoclient.ReportPeriod) (*ResponseGoodsTo
 	return result, nil
 }
 
-func (s Service) CollectIikoAmountReport(period iikoclient.ReportPeriod) (*ResponseIikoAmountReportData, error) {
+func (s Service) CollectIikoAmountReport(period entity.ReportPeriod) (*ResponseIikoAmountReportData, error) {
 	if err := s.config.Read(); err != nil {
 		return nil, err
 	}
@@ -93,18 +86,19 @@ func (s Service) CollectIikoAmountReport(period iikoclient.ReportPeriod) (*Respo
 	return s.iikoAmountReport(period)
 }
 
-func (s Service) iikoOLAPReport(period iikoclient.ReportPeriod) (*ResponseIikoOlAPReportData, error) {
-	params := query.New(s.token).
+func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPReportData, error) {
+	q, err := query.New(s.link(olapReportUrl), s.token).
 		ReportType(reportTypeSales).
 		Period(period).
 		GroupRows("JurName", "DishGroup.SecondParent", "DishCode", "DishName", "PayTypes", "OrderDiscount.Type").
-		Args("DishSumInt", "DiscountSum", "DishDiscountSumInt", "ProductCostBase.ProductCost")
+		Args("DishSumInt", "DiscountSum", "DishDiscountSumInt", "ProductCostBase.ProductCost").
+		Build()
 
-	q, err := s.queryBuilder(olapReportUrl, params)
 	if err != nil {
 		return nil, err
 	}
-	d, err := get(q)
+
+	d, err := q.Get()
 	if err != nil {
 		return nil, err
 	}
@@ -118,18 +112,18 @@ func (s Service) iikoOLAPReport(period iikoclient.ReportPeriod) (*ResponseIikoOl
 	return result, nil
 }
 
-func (s Service) iikoAmountReport(period iikoclient.ReportPeriod) (*ResponseIikoAmountReportData, error) {
-	params := query.New(s.token).
+func (s Service) iikoAmountReport(period entity.ReportPeriod) (*ResponseIikoAmountReportData, error) {
+	q, err := query.New(s.link(olapReportUrl), s.token).
 		ReportType(reportTypeTransactions).
 		Period(period).
 		GroupRows("Product.SecondParent", "Product.Store", "Product.Num", "Product.Name").
-		Args("StartBalance.Amount", "Amount.In", "Amount.Out", "FinalBalance.Amount")
-
-	q, err := s.queryBuilder(olapReportUrl, params)
+		Args("StartBalance.Amount", "Amount.In", "Amount.Out", "FinalBalance.Amount").
+		Build()
 	if err != nil {
 		return nil, err
 	}
-	d, err := get(q)
+
+	d, err := q.Get()
 	if err != nil {
 		return nil, err
 	}
@@ -143,38 +137,6 @@ func (s Service) iikoAmountReport(period iikoclient.ReportPeriod) (*ResponseIiko
 	return result, nil
 }
 
-func (s Service) queryBuilder(link string, params interface{}) (string, error) {
-	host := fmt.Sprintf("%s%s", s.config.API, link)
-	u, err := url.Parse(host)
-	if err != nil {
-		return "", err
-	}
-	u.Scheme = "http"
-	q := u.Query()
-	if pp, ok := params.([]string); ok {
-		for _, s := range pp {
-			v := strings.Split(s, "=")
-			q.Add(v[0], v[1])
-		}
-	}
-	if pp, ok := params.(map[string]string); ok {
-		for k, v := range pp {
-			q.Set(k, v)
-		}
-	}
-
-	u.RawQuery = q.Encode()
-	res := u.String()
-	s.logger.Debug(res)
-
-	return res, nil
-}
-
-func get(q string) ([]byte, error) {
-	resp, err := http.Get(q)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-	return ioutil.ReadAll(resp.Body)
+func (s Service) link(link string) string {
+	return fmt.Sprintf("%s%s", s.config.API, link)
 }

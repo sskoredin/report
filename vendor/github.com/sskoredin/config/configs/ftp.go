@@ -5,12 +5,13 @@ import (
 )
 
 type FTP struct {
-	Host     string `toml:"host" json:"host"`
-	Port     int    `toml:"port" json:"port"`
-	User     string `toml:"user" json:"user"`
-	Password string `toml:"password" json:"password"`
-	Path     string `toml:"path" json:"path"`
-	File     string `toml:"file" json:"file"`
+	Host       string `toml:"host" json:"host"`
+	Port       int    `toml:"port" json:"port"`
+	User       string `toml:"user" json:"user"`
+	Password   string `toml:"password" json:"password"`
+	Path       string `toml:"path" json:"path"`
+	OrdersPath string `toml:"orderspath" json:"orderspath"`
+	File       string `toml:"file" json:"file"`
 }
 
 func (c *FTP) Read() error {
@@ -37,6 +38,10 @@ func (c *FTP) Read() error {
 		return err
 	}
 	c.Path, err = client.Get(consul.FTPPath)
+	if err != nil {
+		return err
+	}
+	c.OrdersPath, err = client.Get(consul.FTPOrdersPath)
 	if err != nil {
 		return err
 	}
