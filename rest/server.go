@@ -94,7 +94,8 @@ func (r Rest) getReport(w http.ResponseWriter, req *http.Request) {
 }
 func (r Rest) newServer() *http.Server {
 	router := mux.NewRouter()
-	router.HandleFunc("/", r.getReport).Methods(http.MethodGet)
+	router.HandleFunc("/report", r.getReport).Methods(http.MethodGet)
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./src")))
 
 	return &http.Server{
 		Addr:    r.config.ListenAddr(),

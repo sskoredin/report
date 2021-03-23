@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="./ico.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+  <title>iiko Report</title>
+</head>
+<body>
+
+<form id="form" method="GET">
+  <div class="hidden">
+    <label for="startperiod">start</label>
+    <input name="start" id="startperiod" value="">
+  </div>
+  <div class="hidden">
+    <label for="endperiod">end</label>
+    <input name="end" id="endperiod" value="">
+  </div>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    Send Report
+  </button>
+</form>
+
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+  <label class="mdl-button mdl-js-button mdl-button--icon" for="reportrange">
+    <i class="material-icons">calendar_today</i>
+  </label>
+  <div class="mdl-textfield__expandable-holder">
+    <input class="mdl-textfield__input" type="text" id="reportrange">
+  </div>
+
+  <!--<div class="mdl-textfield mdl-js-textfield mdl-textfield&#45;&#45;floating-label">-->
+  <!--	<input class="mdl-textfield__input" type="text" id="reportrange">-->
+  <!--	<label class="mdl-textfield__label" for="reportrange">Select period</label>-->
+  <!--</div>-->
+
+  <script src="./calendar.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+</html>
