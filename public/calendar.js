@@ -4,8 +4,8 @@
       var end = moment();
 
       function cb(start, end) {
-          $('#startperiod').val(start.format('DD.MM.YYYY'));
-          $('#endperiod').val(end.format('DD.MM.YYYY'));
+          $('#startperiod').val(start.format('MM.DD.YYYY'));
+          $('#endperiod').val(end.format('MM.DD.YYYY'));
       }
 
       $('#reportrange').daterangepicker({
