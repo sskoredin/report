@@ -5,5 +5,5 @@ WORKDIR /app/iiko_report
 COPY . .
 RUN go build -o /app/proc .
 RUN rm -rf /app/iiko_report
-COPY ./public /app
+COPY ./public /app/public
 CMD ["/app/proc"]
