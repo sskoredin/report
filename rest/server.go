@@ -97,7 +97,7 @@ func (r Rest) newServer() *http.Server {
 	router := mux.NewRouter()
 	router.HandleFunc("/report", r.getReport).Methods(http.MethodGet)
 	router.HandleFunc("/", home).Methods(http.MethodGet)
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./public")))
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("/app/public")))
 
 	return &http.Server{
 		Addr:    r.config.ListenAddr(),
@@ -105,7 +105,7 @@ func (r Rest) newServer() *http.Server {
 	}
 }
 func home(w http.ResponseWriter, r *http.Request) {
-	p := path.Dir("./public/index.html")
+	p := path.Dir("/app/public/index.html")
 	// set header
 	w.Header().Set("Content-type", "text/html")
 	http.ServeFile(w, r, p)
