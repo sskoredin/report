@@ -10,10 +10,10 @@ $("#form").submit(function(e) {
 
 		var url="http://172.28.63.29:8350/report?start="+start+'&end='+end
 			var jqxhr = $.get( url, function() {
-        alert( "success" );
+        alert( "sended" );
       })
         .done(function() {
-          alert( "second success" );
+          alert( "success" );
         })
         .fail(function() {
           alert( "error" );
