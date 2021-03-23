@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path"
 	"time"
 
 	"github.com/pkg/errors"
@@ -95,14 +96,20 @@ func (r Rest) getReport(w http.ResponseWriter, req *http.Request) {
 func (r Rest) newServer() *http.Server {
 	router := mux.NewRouter()
 	router.HandleFunc("/report", r.getReport).Methods(http.MethodGet)
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./src")))
+	router.HandleFunc("/", home).Methods(http.MethodGet)
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./public")))
 
 	return &http.Server{
 		Addr:    r.config.ListenAddr(),
 		Handler: router,
 	}
 }
-
+func home(w http.ResponseWriter, r *http.Request) {
+	p := path.Dir("./public/index.html")
+	// set header
+	w.Header().Set("Content-type", "text/html")
+	http.ServeFile(w, r, p)
+}
 func (r Rest) graceFullShutdown(server *http.Server, quit <-chan os.Signal, done chan<- bool) {
 	<-quit
 	r.logger.Info("Server is shutting down...")
