@@ -8,7 +8,7 @@ import (
 	query "github.com/sskoredin/connector/query"
 )
 
-func (s Service) auth() error {
+func (s *Service) auth() error {
 	q, err := query.New(s.link(authUrl), "").
 		Login(s.config.User).
 		Pass(s.config.Password).
