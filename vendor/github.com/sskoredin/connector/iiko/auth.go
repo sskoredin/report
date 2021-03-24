@@ -16,7 +16,7 @@ func (s Service) auth() error {
 	if err != nil {
 		return err
 	}
-
+	s.logger.Info(q)
 	resp, err := q.Get()
 	if err != nil {
 		return err
@@ -28,6 +28,7 @@ func (s Service) auth() error {
 	}
 
 	s.token = fmt.Sprintf(string(resp))
+	s.logger.Infof("token %s", s.token)
 	return nil
 }
 
