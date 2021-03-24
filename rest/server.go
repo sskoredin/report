@@ -74,9 +74,12 @@ func (r Rest) getReport(w http.ResponseWriter, req *http.Request) {
 	var q query
 	q.start = values.Get("start")
 	q.end = values.Get("end")
+	r.logger.Infof("get report request from %s to %s", q.start, q.end)
+
 	valid, err := q.isValid()
 	if err != nil {
 		fmt.Fprintf(w, "error check period start=%s end=%s. err: %s ", q.start, q.end, err.Error())
+		return
 	}
 	if !valid {
 		fmt.Fprintf(w, "invalid period start=%s end=%s", q.start, q.end)
@@ -91,8 +94,8 @@ func (r Rest) getReport(w http.ResponseWriter, req *http.Request) {
 
 	response := fmt.Sprintf("Report from %s to %s was sended", q.start, q.end)
 	fmt.Fprint(w, response)
-
 }
+
 func (r Rest) newServer() *http.Server {
 	router := mux.NewRouter()
 	router.HandleFunc("/report", r.getReport).Methods(http.MethodGet)
