@@ -35,11 +35,9 @@ func (s Service) CollectIikoOLAPReport(period entity.ReportPeriod) (*ResponseIik
 	if err := s.config.Read(); err != nil {
 		return nil, err
 	}
-	s.logger.Debugf("config %+v", s.config)
 	if err := s.auth(); err != nil {
 		return nil, err
 	}
-
 	if err := period.Parse(); err != nil {
 		return nil, err
 	}
@@ -97,10 +95,8 @@ func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPRe
 		Build()
 
 	if err != nil {
-		s.logger.Error(err)
 		return nil, err
 	}
-	s.logger.Debugf("query %v", q)
 
 	d, err := q.Get()
 	if err != nil {

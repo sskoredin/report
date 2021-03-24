@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -92,7 +93,19 @@ func (s Service) Walk() ([]*ftp.Entry, error) {
 		return nil, err
 	}
 
-	return c.List(s.config.OrdersPath)
+	files, err := c.List(s.config.OrdersPath)
+	if err != nil {
+		return nil, err
+	}
+	res := make([]*ftp.Entry, 0, len(files))
+
+	for _, file := range files {
+		if file != nil && strings.Contains(file.Name, "order") {
+			res = append(res, file)
+		}
+	}
+
+	return res, nil
 }
 
 func (s Service) dial() (*ftp.ServerConn, error) {

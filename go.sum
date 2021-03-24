@@ -317,6 +317,8 @@ github.com/sskoredin/connector v0.0.0-20210317152616-39370a820e30 h1:TDYIAq8M1Lj
 github.com/sskoredin/connector v0.0.0-20210317152616-39370a820e30/go.mod h1:rkWj2ZadMIcaZ0ItUVgAICg+El3P4OZA/B4BDxJUqkI=
 github.com/sskoredin/connector v0.0.0-20210322195017-5b3a70dce5d9 h1:+CXAuKnB6JWg8W+z1C86QdxWuamwYMSIQQLY/edVG2Y=
 github.com/sskoredin/connector v0.0.0-20210322195017-5b3a70dce5d9/go.mod h1:P2HGMhXl7kevqQLOykBHvuJTD7NT8Y5JPQWzUGoY2mQ=
+github.com/sskoredin/connector v0.0.0-20210324090132-28ab35db05e4 h1:3wahQVp7xyDBF2eoJM2qHx4JAvX873NXeIVAeortO3U=
+github.com/sskoredin/connector v0.0.0-20210324090132-28ab35db05e4/go.mod h1:VjyxkSWaBO5tOnRmMCyvjYbMmLv90jR9wXDyjSmGn/s=
 github.com/sskoredin/go_iiko v0.0.0-20201202123232-e80038080995 h1:cIeySqybG+P10kQTiQh73StYiOzRWyZ57zDykJw2jKc=
 github.com/sskoredin/go_iiko v0.0.0-20201202123232-e80038080995/go.mod h1:TkLkTcOO+3avKfTmY3vamXZW2y2XxLFo7KF0hQG0wbw=
 github.com/sskoredin/telegram v0.0.0-20210309094541-9cfb24cd9412 h1:jGuy1wkBC64rXwqPZ5h99Yep+blPtrBITdKTPzBM478=

@@ -73,7 +73,7 @@ github.com/sirupsen/logrus
 ## explicit
 github.com/sskoredin/config
 github.com/sskoredin/config/configs
-# github.com/sskoredin/connector v0.0.0-20210322195017-5b3a70dce5d9
+# github.com/sskoredin/connector v0.0.0-20210324090132-28ab35db05e4
 ## explicit
 github.com/sskoredin/connector
 github.com/sskoredin/connector/domain/entity

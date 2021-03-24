@@ -15,15 +15,20 @@ type Params struct {
 
 func New(link, token string) Params {
 	var p Params
+	p.url = link
 	if token != "" {
-		if strings.Contains(link, "9900") || strings.Contains(link, "biz") || strings.Contains(link, "9901") {
+		if p.isIikoBiz() {
 			p = p.token(token)
 		} else {
 			p = p.key(token)
 		}
 	}
-	p.url = link
+
 	return p
+}
+
+func (p Params) isIikoBiz() bool {
+	return strings.Contains(p.url, "9900") || strings.Contains(p.url, "biz") || strings.Contains(p.url, "9901")
 }
 
 func (p Params) Build() (Query, error) {
@@ -118,6 +123,12 @@ func (p Params) ID(s string) Params {
 
 func (p Params) Login(s string) Params {
 	p.params = append(p.params, fmt.Sprintf("login=%s", s))
+	return p
+}
+
+func (p Params) Pass(s string) Params {
+	s = passHash(s)
+	p.params = append(p.params, fmt.Sprintf("pass=%s", s))
 	return p
 }
 
