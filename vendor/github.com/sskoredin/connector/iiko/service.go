@@ -97,6 +97,7 @@ func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPRe
 		Build()
 
 	if err != nil {
+		s.logger.Error(err)
 		return nil, err
 	}
 	s.logger.Debugf("query %v", q)

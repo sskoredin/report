@@ -16,6 +16,7 @@ func (s Service) auth() error {
 	if err != nil {
 		return err
 	}
+	s.logger.Infof("auth query %s",q)
 
 	resp, err := q.Get()
 	if err != nil {
@@ -26,8 +27,8 @@ func (s Service) auth() error {
 	if len(result) > 45 {
 		return errors.New(entity.ErrNotAuth)
 	}
-
 	s.token = fmt.Sprintf(string(resp))
+	s.logger.Debugf("token: %s", s.token)
 	return nil
 }
 
