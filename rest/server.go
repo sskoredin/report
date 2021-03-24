@@ -85,7 +85,7 @@ func (r Rest) getReport(w http.ResponseWriter, req *http.Request) {
 		fmt.Fprintf(w, "invalid period start=%s end=%s", q.start, q.end)
 		return
 	}
-
+	r.logger.Debug("making report...")
 	if err := report.MakeReportWithAttempts(q.start, q.end, 0); err != nil {
 		response := fmt.Sprintf("Failed to make report, err:%s", err.Error())
 		fmt.Fprint(w, response)
