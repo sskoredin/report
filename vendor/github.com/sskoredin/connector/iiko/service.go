@@ -38,7 +38,9 @@ func (s Service) CollectIikoOLAPReport(period entity.ReportPeriod) (*ResponseIik
 	if err := s.auth(); err != nil {
 		return nil, err
 	}
+	s.logger.Infof("token %s",s.token)
 	if err := period.Parse(); err != nil {
+		s.logger.Error(err)
 		return nil, err
 	}
 
@@ -97,7 +99,7 @@ func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPRe
 	if err != nil {
 		return nil, err
 	}
-
+	s.logger.Infof("query:%s",q)
 	d, err := q.Get()
 	if err != nil {
 		return nil, err
