@@ -18,6 +18,10 @@ type Customer struct {
 	WhenCreated    *time.Time `json:"whenCreated"`
 }
 
+type CreateCustomer struct {
+	Customer Customer `json:"customer"`
+}
+
 type CustomerIiko struct {
 	//id in iiko
 	Identifier     string  `json:"id"`

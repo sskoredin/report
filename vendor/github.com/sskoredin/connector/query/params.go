@@ -127,6 +127,9 @@ func (p Params) Login(s string) Params {
 }
 
 func (p Params) Pass(s string) Params {
+	if p.isIikoBiz() {
+		return p.Password(s)
+	}
 	s = passHash(s)
 	p.params = append(p.params, fmt.Sprintf("pass=%s", s))
 	return p

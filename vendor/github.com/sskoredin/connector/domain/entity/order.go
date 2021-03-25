@@ -9,20 +9,20 @@ type OrderQuery struct {
 }
 
 type OrderCustomer struct {
-	ID    string `json:"id"`
+	ID    string `json:"id,omitempty"`
 	Name  string `json:"name"`
 	Phone string `json:"phone"`
 	Email string `json:"email"`
 }
 
 type Order struct {
-	ID            string       `json:"id"`
+	ID            string       `json:"id,omitempty"`
 	Date          string       `json:"date"`
 	Phone         string       `json:"phone"`
 	IsSelfService string       `json:"isSelfService"`
 	Items         []OrderItem  `json:"items"`
 	Address       OrderAddress `json:"address"`
-	PaymentItems  PaymentItem  `json:"paymentItems"`
+	//PaymentItems  PaymentItem  `json:"paymentItems"`
 }
 type PaymentItem struct {
 	Sum                   string        `json:"sum"`

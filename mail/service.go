@@ -3,7 +3,6 @@ package mail
 import (
 	"errors"
 	"fmt"
-	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/iiko_report/converter"
 	mv2 "gopkg.in/mail.v2"
 	"os"
@@ -43,7 +42,8 @@ func (s Service) send(start, end string) error {
 		if err := mv2.Send(sm, m); err != nil {
 			return err
 		}
-		logrus.Infof("send to %s successfully", recipient)
+		s.logger.Infof("send to %s successfully", recipient)
 	}
+
 	return nil
 }

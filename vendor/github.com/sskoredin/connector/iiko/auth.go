@@ -8,7 +8,7 @@ import (
 	query "github.com/sskoredin/connector/query"
 )
 
-func (s *Service) auth() error {
+func (s Service) auth() error {
 	q, err := query.New(s.link(authUrl), "").
 		Login(s.config.User).
 		Pass(s.config.Password).
@@ -16,7 +16,7 @@ func (s *Service) auth() error {
 	if err != nil {
 		return err
 	}
-	s.logger.Info(q)
+
 	resp, err := q.Get()
 	if err != nil {
 		return err
@@ -28,7 +28,7 @@ func (s *Service) auth() error {
 	}
 
 	s.token = fmt.Sprintf(string(resp))
-	s.logger.Infof("token %s", s.token)
+
 	return nil
 }
 

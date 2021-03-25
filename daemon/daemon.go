@@ -2,7 +2,6 @@ package daemon
 
 import (
 	"github.com/robfig/cron"
-	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/iiko_report/report"
 	"os"
 	"os/signal"
@@ -13,7 +12,7 @@ func (d Daemon) Run() error {
 	if err := d.config.Read(); err != nil {
 		return err
 	}
-	logrus.Println(d.config)
+
 	schedule, err := cron.ParseStandard(d.config.Scheduler)
 	if err != nil {
 		return err

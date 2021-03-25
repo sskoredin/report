@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/jlaffaye/ftp"
+	"github.com/sskoredin/connector/domain/entity"
 	"io"
 	"io/ioutil"
 	"log"
@@ -106,6 +107,34 @@ func (s Service) Walk() ([]*ftp.Entry, error) {
 	}
 
 	return res, nil
+}
+
+func (s Service) DeleteFiles(files []entity.OrderFile) error {
+	c, err := s.dial()
+	if err != nil {
+		s.logger.Debugf("DeleteFiles", err)
+		return err
+	}
+	if err != nil {
+		return err
+	}
+
+	defer c.Quit()
+
+	err = c.Login(s.config.User, s.config.Password)
+	if err != nil {
+		return err
+	}
+
+	if err := c.ChangeDir(s.config.OrdersPath); err != nil {
+		return err
+	}
+	for _, file := range files {
+		if err := c.Delete(file.FileName); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 func (s Service) dial() (*ftp.ServerConn, error) {

@@ -8,6 +8,7 @@ import (
 )
 
 func (s Service) GetDiscounts(organization string) ([]entity.IikoDiscount, error) {
+	var err error
 	q, err := query.New(s.link(deliveryDiscounts), s.token).
 		Organization(organization).
 		Build()
@@ -37,7 +38,10 @@ func (s Service) GetNomenclature(organizationID string) (*entity.Nomenclature, e
 }
 
 func (s Service) AddOrder(order entity.OrderQuery) error {
-	q, err := query.New(s.link(addOrder), s.token).
+	if err := s.AuthV2(); err != nil {
+		return err
+	}
+	q, err := query.New(s.link1(addOrder), s.token).
 		RequestTimeout("10000").
 		Build()
 	if err != nil {

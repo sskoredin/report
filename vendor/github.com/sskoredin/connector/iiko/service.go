@@ -38,9 +38,7 @@ func (s Service) CollectIikoOLAPReport(period entity.ReportPeriod) (*ResponseIik
 	if err := s.auth(); err != nil {
 		return nil, err
 	}
-
 	if err := period.Parse(); err != nil {
-		s.logger.Error(err)
 		return nil, err
 	}
 
@@ -99,12 +97,12 @@ func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPRe
 	if err != nil {
 		return nil, err
 	}
-	s.logger.Infof("query:%s",q)
+
 	d, err := q.Get()
 	if err != nil {
 		return nil, err
 	}
-	s.logger.Infof("olap query $s",q)
+
 	result := new(ResponseIikoOlAPReportData)
 
 	if err := xml.Unmarshal(d, result); err != nil {

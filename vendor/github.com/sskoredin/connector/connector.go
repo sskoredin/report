@@ -36,13 +36,13 @@ type IikoBizClient interface {
 	RemoveCategoryFromCustomer(customerID, organizationId, categoryID string) error
 	AddCategoryToCustomer(customerID, organizationId, categoryID string) error
 	WriteOff(organizationID, customerID, walletID string, sum float64) error
-	CreateOrReplaceCustomer(customer entity.Customer) error
+	CreateOrReplaceCustomer(customer entity.Customer) (string, error)
 
 	GetDiscounts(organization string) ([]entity.IikoDiscount, error)
 	GetNomenclature(organizationID string) (*entity.Nomenclature, error)
 	AddOrder(order entity.OrderQuery) error
 
-	GetMenu(organizationID string) ([]entity.Nomenclature, error)
+	GetMenu(organizationID string) (*entity.Nomenclature, error)
 }
 
 func NewIikoBizClient() (IikoBizClient, error) {
@@ -57,6 +57,7 @@ type FTPClient interface {
 	SendFile(filename string) error
 	GetFile(filename string) error
 	Walk() ([]*ftp.Entry, error)
+	DeleteFiles(files []entity.OrderFile) error
 }
 
 func NewFTPClient() (FTPClient, error) {

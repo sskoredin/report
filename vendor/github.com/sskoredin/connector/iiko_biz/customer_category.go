@@ -30,7 +30,7 @@ func (s *Service) AddCategoryToCustomer(customerID, organizationId, categoryID s
 		return err
 	}
 
-	_, err = q.Post("", nil)
+	_, err = q.Post("application/json", nil)
 	return err
 
 }
@@ -43,6 +43,6 @@ func (s *Service) RemoveCategoryFromCustomer(customerID, organizationId, categor
 		return err
 	}
 
-	_, err = q.Post("", nil)
+	_, err = q.Post("application/json", nil)
 	return err
 }

@@ -63,18 +63,19 @@ func (s *Service) WriteOff(organizationID, customerID, walletID string, sum floa
 	if err != nil {
 		return err
 	}
-	_, err = q.Post("", nil)
+	_, err = q.Post("application/json", nil)
 	return err
 }
 
-func (s *Service) CreateOrReplaceCustomer(customer entity.Customer) error {
-	q, err := query.New(s.link(customerCreateOrReplace), s.token).OrganizationID(customer.Organization).
+func (s *Service) CreateOrReplaceCustomer(customer entity.Customer) (string, error) {
+	q, err := query.New(s.link(customerCreateOrReplace), s.token).Organization(customer.Organization).
 		Build()
-	d, err := json.Marshal(customer)
+	data := entity.CreateCustomer{Customer: customer}
+	d, err := json.Marshal(data)
 	if err != nil {
-		return err
+		return "", err
 	}
 
-	_, err = q.Post("", bytes.NewReader(d))
-	return err
+	idBytes, err := q.Post("application/json", bytes.NewReader(d))
+	return string(idBytes), err
 }

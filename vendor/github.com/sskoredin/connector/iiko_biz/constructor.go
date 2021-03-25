@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/sskoredin/config/configs"
 	logger "github.com/sskoredin/telegram_client"
+	"strings"
 	"time"
 )
 
@@ -26,6 +27,10 @@ func New() (*Service, error) {
 
 func (s *Service) link(link string) string {
 	return fmt.Sprintf("%s%s", s.config.API, link)
+}
+func (s *Service) link1(link string) string {
+	l := strings.Replace(s.config.API, "9900", "9901", 1)
+	return fmt.Sprintf("%s%s", l, link)
 }
 func (s *Service) linkWithValue(link, value string) string {
 	link = fmt.Sprintf(link, value)
