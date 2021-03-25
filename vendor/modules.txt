@@ -60,7 +60,7 @@ github.com/robfig/cron
 ## explicit
 github.com/sskoredin/config
 github.com/sskoredin/config/configs
-# github.com/sskoredin/connector v0.0.0-20210325224606-9c7b801562a4
+# github.com/sskoredin/connector v0.0.0-20210325232512-4c5ae80a4025
 ## explicit
 github.com/sskoredin/connector
 github.com/sskoredin/connector/domain/entity

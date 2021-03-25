@@ -14,7 +14,7 @@ import (
 )
 
 func (s Service) SendFile(filename string) error {
-	s.logger.Infof("Sending file to ftp path %s", s.config.Path)
+	s.logger.Debugf("Sending file to ftp path %s", s.config.Path)
 
 	c, err := s.dial()
 	if err != nil {
@@ -44,7 +44,7 @@ func (s Service) SendFile(filename string) error {
 }
 
 func (s Service) GetFile(filename string) error {
-	s.logger.Infof("Getting file from ftp path %s", s.config.OrdersPath)
+	s.logger.Debugf("Getting file from ftp path %s", s.config.OrdersPath)
 
 	c, err := s.dial()
 	if err != nil {
@@ -80,7 +80,7 @@ func (s Service) GetFile(filename string) error {
 }
 
 func (s Service) Walk() ([]*ftp.Entry, error) {
-	s.logger.Infof("Walk in ftp path %s", s.config.OrdersPath)
+	s.logger.Debugf("Walk in ftp path %s", s.config.OrdersPath)
 
 	c, err := s.dial()
 	if err != nil {

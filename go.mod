@@ -20,7 +20,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/robfig/cron v1.2.0
 	github.com/sskoredin/config v0.0.0-20210319113607-59273836e37f
-	github.com/sskoredin/connector v0.0.0-20210325224606-9c7b801562a4
+	github.com/sskoredin/connector v0.0.0-20210325232512-4c5ae80a4025
 	github.com/sskoredin/telegram_client v0.0.0-20210309203107-58eb7ac8972e
 	github.com/tealeg/xlsx v1.0.5
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83 // indirect

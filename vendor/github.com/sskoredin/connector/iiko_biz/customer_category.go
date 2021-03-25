@@ -1,13 +1,12 @@
 package iiko_biz_client
 
 import (
-	"fmt"
 	"github.com/sskoredin/connector/query"
 	"github.com/sskoredin/go_iiko/domain/entity"
 )
 
 func (s *Service) GetCategoriesByOrganization(organizationID string) ([]entity.GuestCategory, error) {
-	s.logger.Info(fmt.Sprintf("get category_id for %s", s.config.CategoryName))
+	s.logger.Debugf("get category_id for %s", s.config.CategoryName)
 	q, err := query.New(s.linkWithValue(organizationGuestCategory, organizationID), s.token).
 		Build()
 	if err != nil {

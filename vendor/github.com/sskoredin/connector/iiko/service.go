@@ -90,8 +90,8 @@ func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPRe
 	q, err := query.New(s.link(olapReportUrl), s.token).
 		ReportType(reportTypeSales).
 		Period(period).
-		GroupRows("JurName", "DishGroup.SecondParent", "DishCode", "DishName", "PayTypes", "OrderDiscount.Type").
-		Args("DishSumInt", "DiscountSum", "DishDiscountSumInt", "ProductCostBase.ProductCost").
+		GroupRows("JurName", "DishGroup.SecondParent", "DishCode", "DishName", "PayTypes", "OrderDiscount.Type", "CloseTime", "OrderNum").
+		Args("DishAmountInt", "DishSumInt", "DiscountSum", "DishDiscountSumInt", "ProductCostBase.ProductCost").
 		Build()
 
 	if err != nil {
