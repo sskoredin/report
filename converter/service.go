@@ -14,7 +14,7 @@ func Convert(responseData *iikoclient.ResponseIikoOlAPReportData) Report {
 	}
 	values := make([]ReportValue, len(responseData.R))
 	for i, v := range responseData.R {
-		closeTime, _ := time.Parse(time.UnixDate, v.CloseTime)
+		closeTime, _ := time.Parse(time.RFC1123Z, v.CloseTime)
 
 		value := ReportValue{
 			Date:                       closeTime.Format("02.01.2006"),
