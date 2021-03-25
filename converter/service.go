@@ -14,10 +14,17 @@ func Convert(responseData *iikoclient.ResponseIikoOlAPReportData) Report {
 	}
 	values := make([]ReportValue, len(responseData.R))
 	for i, v := range responseData.R {
-		closeTime, _ := time.Parse(time.RFC1123Z, v.CloseTime)
+		date := v.CloseTime
+		closeTime := v.CloseTime
+
+		ct, err := time.Parse(time.RFC1123Z, v.CloseTime)
+		if err == nil {
+			date = ct.Format("02.01.2006")
+			closeTime = ct.Format("02.01.2006 15:04:05")
+		}
 
 		value := ReportValue{
-			Date:                       closeTime.Format("02.01.2006"),
+			Date:                       date,
 			JurName:                    v.JurName,
 			DishGroupSecondParent:      v.DishGroupSecondParent,
 			DishCode:                   v.DishCode,
@@ -25,7 +32,8 @@ func Convert(responseData *iikoclient.ResponseIikoOlAPReportData) Report {
 			PayTypes:                   v.PayTypes,
 			DiscountType:               v.OrderDiscountType,
 			DishAmountInt:              v.DishAmountInt,
-			CloseTime:                  closeTime,
+			CloseTime:                  ct,
+			CloseTimeString:            closeTime,
 			OrderNum:                   v.OrderNum,
 			DishSumInt:                 v.DishSumInt,
 			DiscountSum:                v.DiscountSum,
@@ -101,7 +109,7 @@ func (rep Report) ToXlsx(start, end string) error {
 		setValue(r, v.PayTypes)
 		setValue(r, v.DiscountType)
 		setValue(r, v.DishAmountInt)
-		setValue(r, v.CloseTime.Format("02.01.2006 15:04:05"))
+		setValue(r, v.CloseTimeString)
 		setValue(r, v.OrderNum)
 		setValue(r, v.DishSumInt)
 		setValue(r, v.DiscountSum)

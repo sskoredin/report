@@ -12,6 +12,7 @@ type ReportValue struct {
 	DiscountType               string
 	DishAmountInt              float64
 	CloseTime                  time.Time
+	CloseTimeString            string
 	OrderNum                   int
 	DishSumInt                 float64
 	DiscountSum                float64
