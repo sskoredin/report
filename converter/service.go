@@ -17,7 +17,7 @@ func Convert(responseData *iikoclient.ResponseIikoOlAPReportData) Report {
 		date := v.CloseTime
 		closeTime := v.CloseTime
 
-		ct, err := time.Parse(time.RFC1123Z, v.CloseTime)
+		ct, err := time.Parse(time.UnixDate, v.CloseTime)
 		if err == nil {
 			date = ct.Format("02.01.2006")
 			closeTime = ct.Format("02.01.2006 15:04:05")
