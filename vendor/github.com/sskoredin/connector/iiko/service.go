@@ -98,7 +98,6 @@ func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPRe
 		return nil, err
 	}
 
-	s.logger.Info(q)
 	d, err := q.Get()
 	if err != nil {
 		return nil, err
