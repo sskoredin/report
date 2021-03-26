@@ -3,6 +3,7 @@ github.com/armon/go-metrics
 # github.com/fatih/color v1.9.0
 github.com/fatih/color
 # github.com/gorilla/mux v1.8.0
+## explicit
 github.com/gorilla/mux
 # github.com/hashicorp/consul/api v1.8.1
 github.com/hashicorp/consul/api
@@ -31,15 +32,19 @@ github.com/mitchellh/go-homedir
 # github.com/mitchellh/mapstructure v1.1.2
 github.com/mitchellh/mapstructure
 # github.com/pkg/errors v0.9.1
+## explicit
 github.com/pkg/errors
 # github.com/robfig/cron v1.2.0
+## explicit
 github.com/robfig/cron
 # github.com/sirupsen/logrus v1.8.1
 github.com/sirupsen/logrus
 # github.com/sskoredin/config v0.0.0-20210326074832-6aab33faefc8
+## explicit
 github.com/sskoredin/config
 github.com/sskoredin/config/configs
 # github.com/sskoredin/connector v0.0.0-20210326083040-76cd34be7780
+## explicit
 github.com/sskoredin/connector
 github.com/sskoredin/connector/domain/entity
 github.com/sskoredin/connector/ftp
@@ -50,15 +55,20 @@ github.com/sskoredin/connector/query
 github.com/sskoredin/go_iiko/domain/entity
 github.com/sskoredin/go_iiko/domain/enum
 # github.com/sskoredin/telegram_client v0.0.0-20210326082025-79fbfe362cb3
+## explicit
 github.com/sskoredin/telegram_client
 # github.com/tealeg/xlsx v1.0.5
+## explicit
 github.com/tealeg/xlsx
 # golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
+## explicit
 golang.org/x/sync/errgroup
 # golang.org/x/sys v0.0.0-20200327173247-9dae0f8f5775
 golang.org/x/sys/unix
 golang.org/x/sys/windows
 # gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc
+## explicit
 gopkg.in/alexcesaro/quotedprintable.v3
 # gopkg.in/mail.v2 v2.3.1
+## explicit
 gopkg.in/mail.v2
