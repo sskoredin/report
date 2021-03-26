@@ -12,7 +12,7 @@ type Service struct {
 	token          string
 	config         configs.IikoBiz
 	tokenCreatedAt *time.Time
-	logger         *logger.Logger
+	logger         logger.Logger
 }
 
 func New() (*Service, error) {

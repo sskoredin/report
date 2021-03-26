@@ -8,7 +8,7 @@ import (
 
 type Daemon struct {
 	config      configs.DaemonOlap
-	logger      *logger.Logger
+	logger      logger.Logger
 	mailService mail.Service
 }
 

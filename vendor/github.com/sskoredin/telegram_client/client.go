@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
 	"github.com/sskoredin/config"
 	"log"
 	"net/http"
@@ -12,9 +13,17 @@ import (
 	"path"
 )
 
-type Client struct {
-	token string
-	url   string
+type Logger interface {
+	Info(msg ...interface{}) error
+	Infof(format string, v ...interface{}) error
+	Debug(msg ...interface{}) error
+	Debugf(format string, v ...interface{}) error
+	Warn(msg ...interface{}) error
+	Warnf(format string, v ...interface{}) error
+	Error(msg ...interface{}) error
+	Errorf(format string, v ...interface{}) error
+	Fatal(msg ...interface{}) error
+	Fatalf(format string, v ...interface{}) error
 }
 
 type Message struct {
@@ -22,6 +31,10 @@ type Message struct {
 }
 
 func NewLogger() (*Client, error) {
+	if !isProd() {
+		return &Client{}, nil
+	}
+
 	client, err := config.NewClient()
 	if err != nil {
 		return nil, err
@@ -41,61 +54,64 @@ func NewLogger() (*Client, error) {
 	}, nil
 }
 
-type Logger struct {
+type logger struct {
 	*Client
 	name string
 }
 
-func New(name string) *Logger {
+func New(name string) Logger {
 	c, err := NewLogger()
 	if err != nil {
 		log.Println(err)
 	}
 
-	return &Logger{
+	return &logger{
 		Client: c,
 		name:   name,
 	}
 }
-func (l Logger) Info(msg ...interface{}) error {
-	log.Print()
-	return l.send(l.convert("Info", msg))
+
+func (l logger) Debug(msg ...interface{}) error {
+	return l.send(logrus.DebugLevel, l.convert(msg))
 }
 
-func (l Logger) Infof(format string, v ...interface{}) error {
-	return l.send(l.convert("Info", fmt.Sprintf(format, v...)))
+func (l logger) Debugf(format string, v ...interface{}) error {
+	return l.send(logrus.DebugLevel, l.convert(fmt.Sprintf(format, v...)))
 }
 
-func (l Logger) Warn(msg ...interface{}) error {
-	return l.send(l.convert("Warn", msg))
+func (l logger) Info(msg ...interface{}) error {
+	return l.send(logrus.InfoLevel, l.convert(msg))
 }
 
-func (l Logger) Warnf(format string, v ...interface{}) error {
-	return l.send(l.convert("Debug", fmt.Sprintf(format, v...)))
+func (l logger) Infof(format string, v ...interface{}) error {
+	return l.send(logrus.InfoLevel, l.convert(fmt.Sprintf(format, v...)))
 }
 
-func (l Logger) Debug(msg ...interface{}) error {
-	return l.send(l.convert("Debug", msg))
+func (l logger) Warn(msg ...interface{}) error {
+	return l.send(logrus.WarnLevel, l.convert(msg))
 }
 
-func (l Logger) Debugf(format string, v ...interface{}) error {
-	return l.send(l.convert("Debug", fmt.Sprintf(format, v...)))
+func (l logger) Warnf(format string, v ...interface{}) error {
+	return l.send(logrus.WarnLevel, l.convert(fmt.Sprintf(format, v...)))
+}
+func (l logger) Error(msg ...interface{}) error {
+	return l.send(logrus.ErrorLevel, l.convert(msg))
 }
 
-func (l Logger) Fatal(msg ...interface{}) error {
-	return l.send(l.convert("Fatal", msg))
+func (l logger) Errorf(format string, v ...interface{}) error {
+	return l.send(logrus.ErrorLevel, l.convert(fmt.Sprintf(format, v...)))
 }
 
-func (l Logger) Fatalf(format string, v ...interface{}) error {
-	return l.send(l.convert("Fatal", fmt.Sprintf(format, v...)))
+func (l logger) Fatal(msg ...interface{}) error {
+	return l.send(logrus.FatalLevel, l.convert(msg))
 }
 
-func (l Logger) Error(msg ...interface{}) error {
-	return l.send(l.convert("Error", msg))
+func (l logger) Fatalf(format string, v ...interface{}) error {
+	return l.send(logrus.FatalLevel, l.convert(fmt.Sprintf(format, v...)))
 }
 
-func (l Logger) convert(level string, msg ...interface{}) string {
-	return fmt.Sprintf("%s\n[%s][%s]\n%v", programname(), l.name, level, msg)
+func (l logger) convert(msg ...interface{}) string {
+	return fmt.Sprintf("%s\n[%s]\n%v", programname(), l.name, msg)
 }
 
 func programname() string {
@@ -103,7 +119,17 @@ func programname() string {
 	return path.Base(dir)
 }
 
-func (c Client) send(msg string) error {
+type Client struct {
+	token string
+	url   string
+}
+
+func (c Client) send(level logrus.Level, msg string) error {
+	if !isProd() {
+		print(level, msg)
+		return nil
+	}
+
 	client := &http.Client{}
 	mes := Message{
 		Msg: msg,
@@ -131,4 +157,15 @@ func (c Client) send(msg string) error {
 	}
 
 	return nil
+}
+
+func print(level logrus.Level, msg string) {
+	l := logrus.New()
+	l.Level = level
+	l.Println(msg)
+}
+
+func isProd() bool {
+	v := os.Getenv("APP_PROD")
+	return v != ""
 }

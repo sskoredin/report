@@ -79,9 +79,9 @@ func (p Params) GroupRows(v ...string) Params {
 	return p
 }
 
-func (p Params) Args(v ...string) Params {
+func (p Params) Agrs(v ...string) Params {
 	for _, s := range v {
-		p.params = append(p.params, fmt.Sprintf("arg=%s", s))
+		p.params = append(p.params, fmt.Sprintf("agr=%s", s))
 	}
 	return p
 }

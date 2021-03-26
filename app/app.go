@@ -8,7 +8,7 @@ import (
 )
 
 type App struct {
-	logger *logger.Logger
+	logger logger.Logger
 }
 
 func New() App {

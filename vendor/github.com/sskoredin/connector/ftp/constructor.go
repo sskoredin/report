@@ -7,7 +7,7 @@ import (
 
 type Service struct {
 	config configs.FTP
-	logger *logger.Logger
+	logger logger.Logger
 }
 
 func New() (*Service, error) {

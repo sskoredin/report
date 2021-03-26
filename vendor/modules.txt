@@ -1,33 +1,20 @@
-# github.com/armon/go-metrics v0.3.6
-## explicit
+# github.com/armon/go-metrics v0.0.0-20180917152333-f0300d1749da
 github.com/armon/go-metrics
-# github.com/fatih/color v1.10.0
-## explicit
+# github.com/fatih/color v1.9.0
 github.com/fatih/color
 # github.com/gorilla/mux v1.8.0
-## explicit
 github.com/gorilla/mux
 # github.com/hashicorp/consul/api v1.8.1
 github.com/hashicorp/consul/api
-# github.com/hashicorp/go-cleanhttp v0.5.2
-## explicit
+# github.com/hashicorp/go-cleanhttp v0.5.1
 github.com/hashicorp/go-cleanhttp
-# github.com/hashicorp/go-hclog v0.15.0
-## explicit
+# github.com/hashicorp/go-hclog v0.12.0
 github.com/hashicorp/go-hclog
-# github.com/hashicorp/go-immutable-radix v1.3.0
-## explicit
+# github.com/hashicorp/go-immutable-radix v1.0.0
 github.com/hashicorp/go-immutable-radix
-# github.com/hashicorp/go-msgpack v0.5.5
-## explicit
 # github.com/hashicorp/go-rootcerts v1.0.2
 github.com/hashicorp/go-rootcerts
-# github.com/hashicorp/go-sockaddr v1.0.2
-## explicit
-# github.com/hashicorp/go-uuid v1.0.2
-## explicit
-# github.com/hashicorp/golang-lru v0.5.4
-## explicit
+# github.com/hashicorp/golang-lru v0.5.1
 github.com/hashicorp/golang-lru/simplelru
 # github.com/hashicorp/serf v0.9.5
 github.com/hashicorp/serf/coordinate
@@ -35,33 +22,24 @@ github.com/hashicorp/serf/coordinate
 github.com/jinzhu/now
 # github.com/jlaffaye/ftp v0.0.0-20210307004419-5d4190119067
 github.com/jlaffaye/ftp
-# github.com/kr/text v0.2.0
-## explicit
-# github.com/mattn/go-colorable v0.1.8
+# github.com/mattn/go-colorable v0.1.6
 github.com/mattn/go-colorable
 # github.com/mattn/go-isatty v0.0.12
 github.com/mattn/go-isatty
-# github.com/miekg/dns v1.1.31
-## explicit
 # github.com/mitchellh/go-homedir v1.1.0
 github.com/mitchellh/go-homedir
-# github.com/mitchellh/go-testing-interface v1.14.0
-## explicit
-# github.com/mitchellh/mapstructure v1.4.1
-## explicit
+# github.com/mitchellh/mapstructure v1.1.2
 github.com/mitchellh/mapstructure
 # github.com/pkg/errors v0.9.1
-## explicit
 github.com/pkg/errors
 # github.com/robfig/cron v1.2.0
-## explicit
 github.com/robfig/cron
-# github.com/sskoredin/config v0.0.0-20210319113607-59273836e37f
-## explicit
+# github.com/sirupsen/logrus v1.8.1
+github.com/sirupsen/logrus
+# github.com/sskoredin/config v0.0.0-20210326074832-6aab33faefc8
 github.com/sskoredin/config
 github.com/sskoredin/config/configs
-# github.com/sskoredin/connector v0.0.0-20210325233308-e6651aa3fd05
-## explicit
+# github.com/sskoredin/connector v0.0.0-20210326083040-76cd34be7780
 github.com/sskoredin/connector
 github.com/sskoredin/connector/domain/entity
 github.com/sskoredin/connector/ftp
@@ -71,26 +49,16 @@ github.com/sskoredin/connector/query
 # github.com/sskoredin/go_iiko v0.0.0-20201202123232-e80038080995
 github.com/sskoredin/go_iiko/domain/entity
 github.com/sskoredin/go_iiko/domain/enum
-# github.com/sskoredin/telegram_client v0.0.0-20210309203107-58eb7ac8972e
-## explicit
+# github.com/sskoredin/telegram_client v0.0.0-20210326082025-79fbfe362cb3
 github.com/sskoredin/telegram_client
 # github.com/tealeg/xlsx v1.0.5
-## explicit
 github.com/tealeg/xlsx
-# golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
-## explicit
-# golang.org/x/net v0.0.0-20200930145003-4acb6c075d10
-## explicit
 # golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-## explicit
 golang.org/x/sync/errgroup
-# golang.org/x/sys v0.0.0-20210309074719-68d13333faf2
-## explicit
-golang.org/x/sys/internal/unsafeheader
+# golang.org/x/sys v0.0.0-20200327173247-9dae0f8f5775
 golang.org/x/sys/unix
+golang.org/x/sys/windows
 # gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc
-## explicit
 gopkg.in/alexcesaro/quotedprintable.v3
 # gopkg.in/mail.v2 v2.3.1
-## explicit
 gopkg.in/mail.v2

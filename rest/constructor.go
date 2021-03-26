@@ -6,7 +6,7 @@ import (
 )
 
 type Rest struct {
-	logger *logger.Logger
+	logger logger.Logger
 	config configs.Rest
 }
 

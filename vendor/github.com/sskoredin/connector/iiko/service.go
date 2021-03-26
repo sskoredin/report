@@ -50,7 +50,7 @@ func (s Service) getGoodsToFTP(period entity.ReportPeriod) (*ResponseGoodsToFTPD
 		ReportType(reportTypeTransactions).
 		Period(period).
 		GroupRows("Product.Num").
-		Args("FinalBalance.Amount").
+		Agrs("FinalBalance.Amount").
 		Build()
 	if err != nil {
 		return nil, err
@@ -91,7 +91,7 @@ func (s Service) iikoOLAPReport(period entity.ReportPeriod) (*ResponseIikoOlAPRe
 		ReportType(reportTypeSales).
 		Period(period).
 		GroupRows("JurName", "DishGroup.SecondParent", "DishCode", "DishName", "PayTypes", "OrderDiscount.Type", "CloseTime", "OrderNum").
-		Args("DishAmountInt", "DishSumInt", "DiscountSum", "DishDiscountSumInt", "ProductCostBase.ProductCost").
+		Agrs("DishAmountInt", "DishSumInt", "DiscountSum", "DishDiscountSumInt", "ProductCostBase.ProductCost").
 		Build()
 
 	if err != nil {
@@ -117,7 +117,7 @@ func (s Service) iikoAmountReport(period entity.ReportPeriod) (*ResponseIikoAmou
 		ReportType(reportTypeTransactions).
 		Period(period).
 		GroupRows("Product.SecondParent", "Product.Store", "Product.Num", "Product.Name").
-		Args("StartBalance.Amount", "Amount.In", "Amount.Out", "FinalBalance.Amount").
+		Agrs("StartBalance.Amount", "Amount.In", "Amount.Out", "FinalBalance.Amount").
 		Build()
 	if err != nil {
 		return nil, err

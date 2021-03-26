@@ -8,7 +8,7 @@ import (
 type Service struct {
 	Configfile string
 	config     configs.MailOlap
-	logger     *logger.Logger
+	logger     logger.Logger
 }
 
 func New() Service {

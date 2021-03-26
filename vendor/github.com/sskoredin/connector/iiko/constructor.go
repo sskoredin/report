@@ -8,7 +8,7 @@ import (
 type Service struct {
 	token  string
 	config configs.Iiko
-	logger *logger.Logger
+	logger logger.Logger
 }
 
 func New() (*Service, error) {

@@ -5,7 +5,7 @@ import (
 )
 
 type Report struct {
-	logger *logger.Logger
+	logger logger.Logger
 }
 
 func New() Report {

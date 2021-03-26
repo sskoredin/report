@@ -5,7 +5,7 @@ import (
 	logger "github.com/sskoredin/telegram_client"
 	"log"
 	"time"
-	_ "time/tzdata"
+	//_ "time/tzdata"
 )
 
 func init() {
