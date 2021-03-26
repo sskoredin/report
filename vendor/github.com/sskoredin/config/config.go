@@ -20,47 +20,7 @@ type cClient struct {
 	devParams map[string]string
 }
 
-var params = map[string]string{
-	"TELEGRAM_CHAT_IDS":    "1539614935_492307185",
-	"TELEGRAM_XAUTH-TOKEN": "111111-111",
-	"TELEGRAM_URL":         "logger:3250",
-
-	"FTP_HOST":       "ftp.davido01.nichost.ru",
-	"FTP_PORT":       "21",
-	"FTP_USER":       "davido01_skor",
-	"FTP_PASSWORD":   "uLigERaOUpEliSChI1",
-	"FTP_PATH":       "davidoff-bronnaya.ru/docs/auto",
-	"FTP_ORDER_PATH": "davidoff-bronnaya.ru/docs/auto",
-	"FTP_FILE":       "import.csv",
-	"REST_HOST":      "0.0.0.0",
-	"REST_PORT":      "8230",
-
-	"API_IIKO_URL":  "http://94.127.179.181:9081",
-	"IIKO_LOGIN":    "Yakupov",
-	"IIKO_PASSWORD": "1Qz2876",
-
-	"API_BIZ_IIKO_URL":             "http://94.127.179.181:9900",
-	"API_BIZ_CATEGORY_NAME":        "Уведомлен о сгорании бонусов",
-	"IIKO_BIZ_LOGIN":               "sergey@skoredin.pro",
-	"IIKO_BIZ_PASSWORD":            "B@rkas1257",
-	"MAIL_HOST":                    "mail.nic.ru",
-	"MAIL_PORT":                    "587",
-	"MAIL_LOGIN":                   "robot@davidoffclub.ru",
-	"MAIL_PASSWORD":                "SwITERyCHEwConoT1",
-	"MAIL_ADDRESSEE":               "robot",
-	"MAIL_OLAP_SUBJECT":            "OLAP report",
-	"MAIL_OLAP_RECIPIENTS":         "[sskoredin@gmail.com]",
-	"MAIL_AMOUNT_SUBJECT":          "OLAP Ostatki v minuse report iiko",
-	"MAIL_AMOUNT_RECIPIENTS":       "[sskoredin@gmail.com]",
-	"DAEMON_OLAP_SCHEDULER":        "37 12 * * *",
-	"DAEMON_AMOUNT_SCHEDULER":      "37 12 * * *",
-	"DAEMON_INTEGRATION_SCHEDULER": "37 12 * * *",
-	"POSTGRES_HOST":                "0.0.0.0",
-	"POSTGRES_PORT":                "5432",
-	"POSTGRES_DB":                  "iiko",
-	"POSTGRES_USER":                "support",
-	"POSTGRES_PASSWORD":            "qwerty",
-}
+var params = map[string]string{}
 
 func NewClient() (*cClient, error) {
 	// Get a new client

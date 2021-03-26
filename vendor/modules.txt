@@ -39,7 +39,7 @@ github.com/pkg/errors
 github.com/robfig/cron
 # github.com/sirupsen/logrus v1.8.1
 github.com/sirupsen/logrus
-# github.com/sskoredin/config v0.0.0-20210326074832-6aab33faefc8
+# github.com/sskoredin/config v0.0.0-20210326100222-3b1785c7a181
 ## explicit
 github.com/sskoredin/config
 github.com/sskoredin/config/configs

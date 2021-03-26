@@ -6,7 +6,7 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/pkg/errors v0.9.1
 	github.com/robfig/cron v1.2.0
-	github.com/sskoredin/config v0.0.0-20210326074832-6aab33faefc8
+	github.com/sskoredin/config v0.0.0-20210326100222-3b1785c7a181
 	github.com/sskoredin/connector v0.0.0-20210326083040-76cd34be7780
 	github.com/sskoredin/telegram_client v0.0.0-20210326082025-79fbfe362cb3
 	github.com/tealeg/xlsx v1.0.5
