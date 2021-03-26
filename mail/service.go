@@ -13,6 +13,7 @@ func (s Service) Send(start, end string) error {
 	if err != nil {
 		return err
 	}
+	s.logger.Debugf("config:%+v", s.config)
 	return s.send(start, end)
 }
 

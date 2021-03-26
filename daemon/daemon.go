@@ -12,6 +12,7 @@ func (d Daemon) Run() error {
 	if err := d.config.Read(); err != nil {
 		return err
 	}
+	d.logger.Debugf("config:%+v", d.config)
 
 	schedule, err := cron.ParseStandard(d.config.Scheduler)
 	if err != nil {

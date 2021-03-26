@@ -19,7 +19,7 @@ func (r Rest) Run() error {
 	if err := r.config.Read(); err != nil {
 		return err
 	}
-
+	r.logger.Debugf("config:%+v", r.config)
 	done := make(chan bool, 1)
 	quit := make(chan os.Signal, 1)
 
